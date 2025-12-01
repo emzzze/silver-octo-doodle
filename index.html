@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AlphaGuard IT LLC — Women-Owned MSP | Oklahoma</title>
+  <meta name="description" content="AlphaGuard IT LLC — Women-Owned Managed Service Provider delivering reliable IT support, cloud solutions, and proactive cybersecurity for businesses. Based in Oklahoma.">
+  <style>
+    :root { --green: #00ff41; --dark: #000; --card: #001100; }
+    body { margin:0; font-family:'Courier New',monospace; background:var(--dark); color:var(--green); line-height:1.6; }
+    .container { max-width:1000px; margin:0 auto; padding:5vh 2rem 4rem; }
+    h1 { font-size:4.5rem; text-align:center; margin:0; text-shadow:0 0 15px var(--green); letter-spacing:2px; }
+    .subtitle { text-align:center; font-size:1.5rem; margin:1rem 0 3rem; opacity:0.9; }
+    .badge { display:inline-block; background:#ff69b4; color:#000; padding:0.3rem 0.8rem; border-radius:4px; font-weight:bold; font-size:0.9rem; }
+    .services { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:2rem; margin:4rem 0; }
+    .card { background:var(--card); border:1px solid var(--green); padding:2rem; text-align:center; transition:0.3s; cursor:pointer; }
+    .card:hover { box-shadow:0 0 20px var(--green); transform:translateY(-5px); }
+    .card h3 { margin:0 0 1rem; font-size:1.6rem; }
+    button { background:var(--green); color:#000; border:none; padding:0.7rem 1.5rem; font-family:inherit; font-weight:bold; cursor:pointer; margin-top:1rem; }
+    button:hover { background:#00cc33; }
+    .contact { text-align:center; margin:5rem 0; }
+    form { max-width:500px; margin:2rem auto; display:flex; flex-direction:column; gap:0.8rem; }
+    input, textarea { padding:0.8rem; background:#000; border:1px solid var(--green); color:var(--green); font-family:inherit; }
+    footer { text-align:center; padding:2rem; border-top:1px solid var(--green); opacity:0.8; font-size:0.95rem; }
+    .modal { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.95); z-index:1000; align-items:center; justify-content:center; }
+    .modal-content { background:var(--card); padding:2rem; max-width:500px; width:90%; border:1px solid var(--green); position:relative; }
+    .close { position:absolute; top:10px; right:15px; font-size:2rem; cursor:pointer; }
+  </style>
+</head>
+<body>
+<script src="//code.tidio.co/bzdb0ivfcs2wivafi3bcotmrr0d05imr.js" async></script>
+  <div class="container">
+    <h1>AlphaGuard IT LLC</h1>
+    <p class="subtitle">
+      Women-Owned Managed Service Provider | Registered in Oklahoma<br>
+      <span class="badge">Women-Owned Business</span>
+    </p>
+
+    <div class="services">
+      <div class="card" onclick="openModal('support')">
+        <h3>IT Support & Helpdesk</h3>
+        <p>Fast, friendly, and proactive support for your entire team.</p>
+        <button>Learn More →</button>
+      </div>
+      <div class="card" onclick="openModal('cloud')">
+        <h3>Cloud Solutions</h3>
+        <p>Microsoft 365, Azure, AWS — migration, management, and cost optimization.</p>
+        <button>Learn More →</button>
+      </div>
+      <div class="card" onclick="openModal('security')">
+        <h3>Cybersecurity & Compliance</h3>
+        <p>Endpoint protection, backups, and compliance (HIPAA, CMMC, etc.).</p>
+        <button>Learn More →</button>
+      </div>
+    </div>
+
+    <div class="contact">
+      <h2>Ready to talk?</h2>
+      <p>Email us at <strong>etasse@alphaguardit.com</strong> or use the form below.</p>
+
+      <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="contact">
+        <p hidden><input name="bot-field"></p>
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" placeholder="How can we help you?" rows="5" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modals -->
+  <div id="support" class="modal"><div class="modal-content"><span class="close" onclick="closeModal()">&times;</span><h2>IT Support & Helpdesk</h2><p>Details coming this week…</p></div></div>
+  <div id="cloud" class="modal"><div class="modal-content"><span class="close" onclick="closeModal()">&times;</span><h2>Cloud Solutions</h2><p>Details coming this week…</p></div></div>
+  <div id="security" class="modal"><div class="modal-content"><span class="close" onclick="closeModal()">&times;</span><h2>Cybersecurity & Compliance</h2><p>Details coming this week…</p></div></div>
+
+  <footer>
+    © 2025 AlphaGuard IT LLC — All rights reserved.<br>
+    Women-Owned Business • Registered in Oklahoma • <a href="mailto:etasse@alphaguardit.com" style="color:var(--green);">etasse@alphaguardit.com</a>
+  </footer>
+
+  <!-- Tidio Chat Widget – replace YOUR_KEY_HERE after you sign up at tidio.com -->
+  <script src="//code.tidio.co/YOUR_KEY_HERE.js" async></script>
+
+  <script>
+    function openModal(id) { document.getElementById(id).style.display = 'flex'; }
+    function closeModal() { document.querySelectorAll('.modal').forEach(m => m.style.display = 'none'); }
+    window.onclick = e => { if (e.target.classList.contains('modal')) closeModal(); }
+  </script>
+</body>
+</html>
