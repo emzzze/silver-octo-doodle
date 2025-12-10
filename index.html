@@ -8,11 +8,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --navy: #0F1C3A; /* Slightly brighter dark navy */
-            --rose-gold: #FFB6C1; /* Brighter, warmer rose-gold */
-            --sea-green: #4CAF50; /* Perfect toned-down green */
+            --navy: #0F1C3A;
+            --rose-gold: #FFB6C1;
+            --sea-green: #4CAF50;
             --white: #FFFFFF;
-            --light-gray: #F5F5F5;
+            --footer-bg: #0d172f;
+            --footer-text: #a0b8d8;
         }
         body {
             margin: 0;
@@ -20,469 +21,248 @@
             background: var(--navy);
             color: var(--white);
             line-height: 1.6;
-            transition: all 0.3s ease;
             position: relative;
+            min-height: 100vh;
         }
-        /* Circuit pattern on left and right sides */
+        /* Circuit edges */
         body::before, body::after {
             content: "";
             position: absolute;
-            top: 0;
-            bottom: 0;
-            width: 200px; /* Adjust width for edges */
-            background-repeat: repeat-y;
+            top: 0; bottom: 0;
+            width: 220px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 661 1000"><path d="M30 100 L70 50 L110 100 L150 30 L190 100 L230 50 L270 100" stroke="%234CAF50" stroke-width="1.8" fill="none" opacity="0.12"/><path d="M20 300 Q80 240 140 300 T260 300" stroke="%234CAF50" stroke-width="1.5" fill="none" opacity="0.1"/><path d="M40 500 L100 440 L160 500 L220 420 L280 500" stroke="%234CAF50" stroke-width="2" fill="none" opacity="0.13"/><circle cx="120" cy="680" r="4" fill="%234CAF50" opacity="0.15"/><path d="M350 200 L400 260 L450 200 L500 280" stroke="%234CAF50" stroke-width="1.7" fill="none" opacity="0.11"/></svg>') repeat-y;
             background-size: contain;
-            opacity: 0.1;
+            opacity: 0.12;
             z-index: -1;
+            pointer-events: none;
         }
-        body::before {
-            left: 0;
-            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 661 360"><path d="M10 180 L20 160 L30 180 L40 120 L50 180 L60 160 L70 180 L80 120 L90 180" stroke="%234CAF50" stroke-width="0.5" fill="none"/><path d="M5 80 L15 40 L25 80 L35 20 L45 80 L55 40 L65 80 L75 20 L85 80" stroke="%234CAF50" stroke-width="0.3" fill="none"/><path d="M100 200 L110 220 L120 200 L130 240 L140 200 L150 220 L160 200 L170 240 L180 200" stroke="%234CAF50" stroke-width="0.5" fill="none"/><path d="M200 100 L210 80 L220 100 L230 60 L240 100 L250 80 L260 100 L270 60 L280 100" stroke="%234CAF50" stroke-width="0.3" fill="none"/><circle cx="300" cy="150" r="2" fill="%234CAF50"/><line x1="300" y1="150" x2="320" y2="170" stroke="%234CAF50" stroke-width="0.5"/><line x1="320" y1="170" x2="340" y2="150" stroke="%234CAF50" stroke-width="0.5"/><path d="M400 50 L420 70 L440 50 L460 90 L480 50 L500 70 L520 50 L540 90 L560 50" stroke="%234CAF50" stroke-width="0.5" fill="none"/><path d="M350 250 L370 270 L390 250 L410 290 L430 250 L450 270 L470 250 L490 290 L510 250" stroke="%234CAF50" stroke-width="0.3" fill="none"/></svg>');
-        }
-        body::after {
-            right: 0;
-            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 661 360"><path d="M10 180 L20 160 L30 180 L40 120 L50 180 L60 160 L70 180 L80 120 L90 180" stroke="%234CAF50" stroke-width="0.5" fill="none"/><path d="M5 80 L15 40 L25 80 L35 20 L45 80 L55 40 L65 80 L75 20 L85 80" stroke="%234CAF50" stroke-width="0.3" fill="none"/><path d="M100 200 L110 220 L120 200 L130 240 L140 200 L150 220 L160 200 L170 240 L180 200" stroke="%234CAF50" stroke-width="0.5" fill="none"/><path d="M200 100 L210 80 L220 100 L230 60 L240 100 L250 80 L260 100 L270 60 L280 100" stroke="%234CAF50" stroke-width="0.3" fill="none"/><circle cx="300" cy="150" r="2" fill="%234CAF50"/><line x1="300" y1="150" x2="320" y2="170" stroke="%234CAF50" stroke-width="0.5"/><line x1="320" y1="170" x2="340" y2="150" stroke="%234CAF50" stroke-width="0.5"/><path d="M400 50 L420 70 L440 50 L460 90 L480 50 L500 70 L520 50 L540 90 L560 50" stroke="%234CAF50" stroke-width="0.5" fill="none"/><path d="M350 250 L370 270 L390 250 L410 290 L430 250 L450 270 L470 250 L490 290 L510 250" stroke="%234CAF50" stroke-width="0.3" fill="none"/></svg>');
-        }
+        body::before { left: 0; transform: scaleX(-1); }
+        body::after { right: 0; }
+
         header {
             background: linear-gradient(to bottom, var(--navy), var(--sea-green));
-            padding: 2rem;
+            padding: 4rem 2rem 3rem;
             text-align: center;
             position: relative;
-        }
-        .toggles {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            display: flex;
-            gap: 0.5rem;
-        }
-        .toggle-btn {
-            background: rgba(232, 180, 184, 0.2);
-            border: 1px solid var(--rose-gold);
-            color: var(--rose-gold);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            transition: background 0.3s, transform 0.2s;
-        }
-        .toggle-btn:hover {
-            background: var(--rose-gold);
-            color: var(--navy);
-            transform: scale(1.05);
-        }
-        h1 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 2.5rem;
-            color: var(--rose-gold);
-            margin: 0;
-        }
-        header p {
-            font-size: 1.2rem;
-            margin: 0.5rem 0;
         }
         .woman-owned {
-            position: absolute;
-            top: 1rem;
-            left: 1rem;
-            background: var(--rose-gold);
-            color: var(--navy);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: bold;
+            position: absolute; top: 1.5rem; left: 2rem;
+            background: var(--rose-gold); color: var(--navy);
+            padding: 0.6rem 1.4rem; border-radius: 30px;
+            font-weight: bold; font-size: 0.95rem;
         }
-        section {
-            padding: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
+        .lang-toggle {
+            position: absolute; top: 1.5rem; right: 2rem;
+            background: rgba(255,182,193,0.2); border: 1px solid var(--rose-gold);
+            color: var(--rose-gold); padding: 0.7rem 1.4rem; border-radius: 30px;
+            cursor: pointer; font-weight: bold; font-size: 1rem;
         }
-        h2 {
-            font-family: 'Poppins', sans-serif;
-            color: var(--rose-gold);
-            border-bottom: 2px solid var(--sea-green);
-            padding-bottom: 0.5rem;
-        }
-        .services-grid, .packages {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-        }
+        .lang-toggle:hover { background: var(--rose-gold); color: var(--navy); }
+        h1 { font-family: 'Poppins', sans-serif; font-size: 3rem; color: var(--rose-gold); margin: 0.5rem 0; }
+        header p { font-size: 1.3rem; opacity: 0.95; }
+
+        section { padding: 4rem 2rem; max-width: 1200px; margin: 0 auto; }
+        h2 { font-family: 'Poppins', sans-serif; color: var(--rose-gold); border-bottom: 3px solid var(--sea-green); padding-bottom: 0.8rem; margin-bottom: 2rem; }
+
+        .services-grid, .packages { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: 2rem; }
         .service-card, .package-card {
-            background: rgba(76, 175, 80, 0.2);
-            padding: 1.5rem;
-            border-radius: 10px;
-            border-left: 4px solid var(--rose-gold);
-            transition: transform 0.3s, box-shadow 0.3s;
-            cursor: pointer;
+            background: rgba(76,175,80,0.15);
+            padding: 2rem; border-radius: 12px;
+            border-left: 5px solid var(--rose-gold);
+            transition: all 0.3s;
         }
-        .service-card:hover, .package-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3); /* Green glow on hover */
-        }
-        .service-card h3, .package-card h3 {
-            color: var(--rose-gold);
-        }
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-        li:before {
-            content: "\f058";
-            color: var(--sea-green);
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            margin-right: 0.5rem;
-        }
-        .accordion {
-            cursor: pointer;
-            background: var(--sea-green);
-            color: var(--navy);
-            padding: 0.5rem;
-            border-radius: 5px;
-            margin-top: 1rem;
-            transition: background 0.3s;
-        }
-        .accordion:hover {
-            background: var(--rose-gold);
-        }
-        .panel {
-            display: none;
-            padding: 1rem;
-            background: rgba(76, 175, 80, 0.1);
-            border-radius: 5px;
-            margin-top: 0.5rem;
-        }
-        .testimonial {
-            background: rgba(232, 180, 184, 0.1);
-            padding: 1rem;
-            border-radius: 10px;
-            font-style: italic;
-            text-align: center;
-        }
+        .service-card:hover, .package-card:hover { transform: translateY(-10px); box-shadow: 0 12px 30px rgba(76,175,80,0.4); }
+        .price { font-size: 2.4rem; color: var(--sea-green); font-weight: bold; }
+        .accordion { background: var(--sea-green); color: white; padding: 0.8rem; border-radius: 8px; cursor: pointer; text-align: center; margin-top: 1rem; font-weight: bold; }
+        .panel { display: none; padding: 1.2rem; background: rgba(76,175,80,0.1); border-radius: 8px; margin-top: 0.5rem; }
+
+        .testimonial { background: rgba(255,182,193,0.1); padding: 2rem; border-radius: 12px; text-align: center; font-style: italic; }
+
         .chatbot-btn {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background: var(--rose-gold);
-            color: var(--navy);
-            border: none;
-            border-radius: 50px;
-            width: 60px;
-            height: 60px;
-            font-size: 1.5rem;
-            cursor: pointer;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            position: fixed; bottom: 2rem; right: 2rem;
+            background: var(--rose-gold); color: var(--navy);
+            width: 70px; height: 70px; border-radius: 50%;
+            font-size: 2rem; border: none; cursor: pointer;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
             z-index: 1000;
-            transition: transform 0.3s;
         }
-        .chatbot-btn:hover {
-            transform: scale(1.1);
-        }
+
         .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.7);
-            z-index: 1001;
-            animation: fadeIn 0.3s;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8); z-index: 1001; justify-content: center; align-items: center;
         }
         .modal-content {
-            background: var(--navy);
-            margin: 10% auto;
-            padding: 2rem;
-            width: 90%;
-            max-width: 500px;
-            border-radius: 10px;
-            position: relative;
+            background: var(--navy); padding: 2.5rem; border-radius: 16px;
+            width: 90%; max-width: 550px; position: relative;
         }
-        .close {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            font-size: 2rem;
-            cursor: pointer;
-            color: var(--rose-gold);
-        }
-        form {
-            display: flex;
-            flex-direction: column;
-        }
-        input, textarea {
-            margin-bottom: 1rem;
-            padding: 0.5rem;
-            border: 1px solid var(--sea-green);
-            border-radius: 5px;
-            background: var(--light-gray);
-            color: var(--navy);
-        }
-        button[type="submit"] {
-            background: var(--sea-green);
-            color: var(--white);
-            border: none;
-            padding: 0.75rem;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background 0.3s;
-        }
-        button[type="submit"]:hover {
-            background: var(--rose-gold);
-            color: var(--navy);
-        }
-        .service-modal {
-            max-width: 600px;
-        }
-        footer {
-            text-align: center;
-            padding: 1rem;
-            background: var(--sea-green);
-            color: var(--navy);
-        }
-        [data-lang="fr"] { display: none; }
-        [data-lang="fr"].active { display: block; }
-        [data-lang="en"].active { display: block; }
-        .price {
-            font-weight: bold;
-            color: var(--sea-green);
-        }
-        @media (max-width: 768px) {
-            h1 { font-size: 2rem; }
-            section { padding: 1rem; }
-            .toggles { flex-direction: column; }
+        .close { position: absolute; top: 1rem; right: 1.5rem; font-size: 2rem; cursor: pointer; color: var(--rose-gold); }
+
+        /* OKTO-STYLE FOOTER */
+        .main-footer { background: var(--footer-bg); color: var(--footer-text); padding: 5rem 2rem 2rem; margin-top: 8rem; }
+        .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; max-width: 1200px; margin: 0 auto 3rem; padding-bottom: 2rem; border-bottom: 1px solid #2a3a5c; }
+        .footer-logo { font-size: 2.2rem; font-weight: bold; color: var(--rose-gold); }
+        .footer-top h4 { color: var(--rose-gold); margin-bottom: 1rem; }
+        .footer-top ul { list-style: none; padding: 0; }
+        .footer-top li { margin: 0.7rem 0; }
+        .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem; max-width: 1200px; margin: 0 auto; }
+        .footer-links a { color: var(--footer-text); margin: 0 1.2rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; }
+        .footer-links a:hover, .social-icons a:hover { color: var(--rose-gold); }
+        .social-icons a { font-size: 1.5rem; margin-left: 1.5rem; }
+
+        @media (max-width: 968px) {
+            .footer-top { grid-template-columns: 1fr; text-align: center; }
+            .footer-bottom { flex-direction: column; text-align: center; }
         }
     </style>
 </head>
 <body>
+
     <header>
-        <div class="woman-owned" data-en="Woman-Owned <i class='fas fa-crown'></i>" data-fr="Entreprise dirigée par une femme <i class='fas fa-crown'></i>">
-            <span class="active" data-lang="en">Woman-Owned <i class="fas fa-crown"></i></span>
-            <span data-lang="fr">Entreprise dirigée par une femme <i class="fas fa-crown"></i></span>
+        <div class="woman-owned">
+            <span data-lang="en">Woman-Owned</span>
+            <span data-lang="fr">Entreprise dirigée par une femme</span>
         </div>
-        <div class="toggles">
-            <button class="toggle-btn" onclick="toggleLang()">EN / FR</button>
-        </div>
-        <h1 data-en="AlphaGuard IT" data-fr="AlphaGuard IT">
-            <span class="active" data-lang="en">AlphaGuard IT</span>
-            <span data-lang="fr">AlphaGuard IT</span>
-        </h1>
-        <p data-en="Your Geek-Chic Guardian for Secure, Simplified IT Solutions" data-fr="Votre Gardien Geek-Chic pour des Solutions TI Sécurisées et Simplifiées">
-            <span class="active" data-lang="en">Your Geek-Chic Guardian for Secure, Simplified IT Solutions</span>
-            <span data-lang="fr">Votre Gardien Geek-Chic pour des Solutions TI Sécurisées et Simplifiées</span>
-        </p>
+        <button class="lang-toggle" onclick="toggleLang()">EN / FR</button>
+
+        <h1><span data-lang="en">AlphaGuard IT</span><span data-lang="fr">AlphaGuard IT</span></h1>
+        <p><span data-lang="en">Your Geek-Chic Guardian for Secure, Simplified IT Solutions</span>
+           <span data-lang="fr">Votre Gardien Geek-Chic pour des Solutions TI Sécurisées et Simplifiées</span></p>
     </header>
 
     <section id="services">
-        <h2 data-en="Our Services" data-fr="Nos Services">
-            <span class="active" data-lang="en">Our Services</span>
-            <span data-lang="fr">Nos Services</span>
-        </h2>
-        <p data-en="From proactive cybersecurity to seamless cloud management, we handle the tech so you can focus on growth. Tailored for small businesses with a feminine edge." data-fr="De la cybersécurité proactive à la gestion cloud fluide, nous gérons la tech pour que vous puissiez vous concentrer sur la croissance. Adapté aux petites entreprises avec une touche féminine.">
-            <span class="active" data-lang="en">From proactive cybersecurity to seamless cloud management, we handle the tech so you can focus on growth. Tailored for small businesses with a feminine edge.</span>
-            <span data-lang="fr">De la cybersécurité proactive à la gestion cloud fluide, nous gérons la tech pour que vous puissiez vous concentrer sur la croissance. Adapté aux petites entreprises avec une touche féminine.</span>
-        </p>
+        <h2><span data-lang="en">Our Services</span><span data-lang="fr">Nos Services</span></h2>
         <div class="services-grid">
             <div class="service-card" onclick="openServiceModal('cyber')">
-                <i class="fas fa-shield-alt" style="color: var(--rose-gold); font-size: 2rem;"></i>
-                <h3 data-en="Cybersecurity" data-fr="Cybersécurité">
-                    <span class="active" data-lang="en">Cybersecurity</span>
-                    <span data-lang="fr">Cybersécurité</span>
-                </h3>
-                <p data-en="Shield your data with advanced threat detection—no jargon, just protection." data-fr="Protégez vos données avec une détection avancée des menaces—sans jargon, juste protection.">
-                    <span class="active" data-lang="en">Shield your data with advanced threat detection—no jargon, just protection.</span>
-                    <span data-lang="fr">Protégez vos données avec une détection avancée des menaces—sans jargon, juste protection.</span>
-                </p>
+                <i class="fas fa-shield-alt" style="color:var(--rose-gold);font-size:2.5rem;"></i>
+                <h3><span data-lang="en">Cybersecurity</span><span data-lang="fr">Cybersécurité</span></h3>
+                <p><span data-lang="en">Shield your data with advanced threat detection — no jargon, just protection.</span>
+                   <span data-lang="fr">Protégez vos données avec une détection avancée des menaces — sans jargon, juste protection.</span></p>
             </div>
             <div class="service-card" onclick="openServiceModal('cloud')">
-                <i class="fas fa-cloud" style="color: var(--rose-gold); font-size: 2rem;"></i>
-                <h3 data-en="Cloud Management" data-fr="Gestion Cloud">
-                    <span class="active" data-lang="en">Cloud Management</span>
-                    <span data-lang="fr">Gestion Cloud</span>
-                </h3>
-                <p data-en="Streamline your operations with secure, scalable cloud setups." data-fr="Rationalisez vos opérations avec des configurations cloud sécurisées et évolutives.">
-                    <span class="active" data-lang="en">Streamline your operations with secure, scalable cloud setups.</span>
-                    <span data-lang="fr">Rationalisez vos opérations avec des configurations cloud sécurisées et évolutives.</span>
-                </p>
+                <i class="fas fa-cloud" style="color:var(--rose-gold);font-size:2.5rem;"></i>
+                <h3><span data-lang="en">Cloud Management</span><span data-lang="fr">Gestion Cloud</span></h3>
+                <p><span data-lang="en">Seamless migrations & cost optimization for Azure, AWS, Microsoft 365.</span>
+                   <span data-lang="fr">Migrations fluides et optimisation des coûts pour Azure, AWS, Microsoft 365.</span></p>
             </div>
             <div class="service-card" onclick="openServiceModal('support')">
-                <i class="fas fa-headset" style="color: var(--rose-gold); font-size: 2rem;"></i>
-                <h3 data-en="Priority Support" data-fr="Support Prioritaire">
-                    <span class="active" data-lang="en">Priority Support</span>
-                    <span data-lang="fr">Support Prioritaire</span>
-                </h3>
-                <p data-en="24/7 geek squad ready to geek out on your issues." data-fr="Équipe geek 24/7 prête à plonger dans vos problèmes.">
-                    <span class="active" data-lang="en">24/7 geek squad ready to geek out on your issues.</span>
-                    <span data-lang="fr">Équipe geek 24/7 prête à plonger dans vos problèmes.</span>
-                </p>
+                <i class="fas fa-headset" style="color:var(--rose-gold);font-size:2.5rem;"></i>
+                <h3><span data-lang="en">Priority Support</span><span data-lang="fr">Support Prioritaire</span></h3>
+                <p><span data-lang="en">24/7 geek squad ready to solve your issues fast.</span>
+                   <span data-lang="fr">Équipe geek 24/7 prête à résoudre vos problèmes rapidement.</span></p>
             </div>
         </div>
     </section>
 
     <section id="packages">
-        <h2 data-en="Pricing Packages (per device/month)" data-fr="Forfaits Tarifs (par appareil/mois)">
-            <span class="active" data-lang="en">Pricing Packages (per device/month)</span>
-            <span data-lang="fr">Forfaits Tarifs (par appareil/mois)</span>
-        </h2>
+        <h2><span data-lang="en">Pricing Packages (per device/month)</span><span data-lang="fr">Forfaits Tarifs (par appareil/mois)</span></h2>
         <div class="packages">
             <div class="package-card">
-                <h3 data-en="Essential" data-fr="Essentiel">
-                    <span class="active" data-lang="en">Essential</span>
-                    <span data-lang="fr">Essentiel</span>
-                </h3>
+                <h3><span data-lang="en">Essential</span><span data-lang="fr">Essentiel</span></h3>
                 <ul>
-                    <li data-en="Basic security monitoring" data-fr="Surveillance de sécurité de base">
-                        <span class="active" data-lang="en">Basic security monitoring</span>
-                        <span data-lang="fr">Surveillance de sécurité de base</span>
-                    </li>
-                    <li data-en="Unlimited email support" data-fr="Support email illimité">
-                        <span class="active" data-lang="en">Unlimited email support</span>
-                        <span data-lang="fr">Support email illimité</span>
-                    </li>
-                    <li data-en="Monthly health check" data-fr="Vérification santé mensuelle">
-                        <span class="active" data-lang="en">Monthly health check</span>
-                        <span data-lang="fr">Vérification santé mensuelle</span>
-                    </li>
+                    <li>Basic security monitoring</li>
+                    <li>Unlimited email support</li>
+                    <li>Monthly health check</li>
                 </ul>
                 <p><span class="price">$99</span>/month</p>
-                <div class="accordion" onclick="togglePanel(this)" data-en="More Details" data-fr="Plus de Détails">
-                    <span class="active" data-lang="en">More Details</span>
-                    <span data-lang="fr">Plus de Détails</span>
-                </div>
-                <div class="panel">
-                    <p data-en="Ideal for small setups—keeps things stable without overwhelm." data-fr="Idéal pour les petites configurations—maintient la stabilité sans surcharge.">
-                        <span class="active" data-lang="en">Ideal for small setups—keeps things stable without overwhelm.</span>
-                        <span data-lang="fr">Idéal pour les petites configurations—maintient la stabilité sans surcharge.</span>
-                    </p>
-                </div>
+                <div class="accordion" onclick="togglePanel(this)"><span data-lang="en">More Details</span><span data-lang="fr">Plus de détails</span></div>
+                <div class="panel"><p>Perfect for startups and very small teams.</p></div>
             </div>
+            <!-- Repeat for Standard & Complete (same structure) -->
             <div class="package-card">
-                <h3 data-en="Standard" data-fr="Standard">
-                    <span class="active" data-lang="en">Standard</span>
-                    <span data-lang="fr">Standard</span>
-                </h3>
-                <ul>
-                    <li data-en="Advanced cybersecurity" data-fr="Cybersécurité avancée">
-                        <span class="active" data-lang="en">Advanced cybersecurity</span>
-                        <span data-lang="fr">Cybersécurité avancée</span>
-                    </li>
-                    <li data-en="Cloud backups" data-fr="Sauvegardes cloud">
-                        <span class="active" data-lang="en">Cloud backups</span>
-                        <span data-lang="fr">Sauvegardes cloud</span>
-                    </li>
-                    <li data-en="Quarterly reports" data-fr="Rapports trimestriels">
-                        <span class="active" data-lang="en">Quarterly reports</span>
-                        <span data-lang="fr">Rapports trimestriels</span>
-                    </li>
-                </ul>
+                <h3><span data-lang="en">Standard</span><span data-lang="fr">Standard</span></h3>
+                <ul><li>Advanced cybersecurity</li><li>Cloud backups</li><li>Quarterly reports</li></ul>
                 <p><span class="price">$199</span>/month</p>
-                <div class="accordion" onclick="togglePanel(this)" data-en="More Details" data-fr="Plus de Détails">
-                    <span class="active" data-lang="en">More Details</span>
-                    <span data-lang="fr">Plus de Détails</span>
-                </div>
-                <div class="panel">
-                    <p data-en="Proactive protection with priority response." data-fr="Protection proactive avec réponse prioritaire.">
-                        <span class="active" data-lang="en">Proactive protection with priority response.</span>
-                        <span data-lang="fr">Protection proactive avec réponse prioritaire.</span>
-                    </p>
-                </div>
+                <div class="accordion" onclick="togglePanel(this)"><span data-lang="en">More Details</span><span data-lang="fr">Plus de détails</span></div>
+                <div class="panel"><p>Most popular choice for growing businesses.</p></div>
             </div>
             <div class="package-card">
-                <h3 data-en="Complete" data-fr="Complet">
-                    <span class="active" data-lang="en">Complete</span>
-                    <span data-lang="fr">Complet</span>
-                </h3>
-                <ul>
-                    <li data-en="Full strategic IT advisory" data-fr="Conseil TI stratégique complet">
-                        <span class="active" data-lang="en">Full strategic IT advisory</span>
-                        <span data-lang="fr">Conseil TI stratégique complet</span>
-                    </li>
-                    <li data-en="Custom integrations" data-fr="Intégrations personnalisées">
-                        <span class="active" data-lang="en">Custom integrations</span>
-                        <span data-lang="fr">Intégrations personnalisées</span>
-                    </li>
-                    <li data-en="Dedicated vCIO" data-fr="vCIO dédié">
-                        <span class="active" data-lang="en">Dedicated vCIO</span>
-                        <span data-lang="fr">vCIO dédié</span>
-                    </li>
-                </ul>
+                <h3><span data-lang="en">Complete</span><span data-lang="fr">Complet</span></h3>
+                <ul><li>Full strategic IT advisory</li><li>Custom integrations</li><li>Dedicated vCIO</li></ul>
                 <p><span class="price">$399</span>/month</p>
-                <div class="accordion" onclick="togglePanel(this)" data-en="More Details" data-fr="Plus de Détails">
-                    <span class="active" data-lang="en">More Details</span>
-                    <span data-lang="fr">Plus de Détails</span>
-                </div>
-                <div class="panel">
-                    <p data-en="All-in-one growth partner with expert guidance." data-fr="Partenaire de croissance tout-en-un avec guidance experte.">
-                        <span class="active" data-lang="en">All-in-one growth partner with expert guidance.</span>
-                        <span data-lang="fr">Partenaire de croissance tout-en-un avec guidance experte.</span>
-                    </p>
-                </div>
+                <div class="accordion" onclick="togglePanel(this)"><span data-lang="en">More Details</span><span data-lang="fr">Plus de détails</span></div>
+                <div class="panel"><p>Everything you need to scale confidently.</p></div>
             </div>
         </div>
     </section>
 
     <section id="testimonials">
-        <h2 data-en="What Our Clients Say" data-fr="Ce Que Disent Nos Clients">
-            <span class="active" data-lang="en">What Our Clients Say</span>
-            <span data-lang="fr">Ce Que Disent Nos Clients</span>
-        </h2>
+        <h2><span data-lang="en">What Clients Say</span><span data-lang="fr">Témoignages</span></h2>
         <div class="testimonial">
-            <p data-en="&quot;AlphaGuard turned our IT chaos into cosmic order—fast, fierce, and fabulous!&quot;" data-fr="&quot;AlphaGuard a transformé notre chaos TI en ordre cosmique—rapide, féroce et fabuleux !&quot;">
-                <span class="active" data-lang="en">&quot;AlphaGuard turned our IT chaos into cosmic order—fast, fierce, and fabulous!&quot;</span>
-                <span data-lang="fr">&quot;AlphaGuard a transformé notre chaos TI en ordre cosmique—rapide, féroce et fabuleux !&quot;</span>
-            </p>
-            <cite data-en="– Tech-Savvy CEO" data-fr="– PDG Tech-Avicée">
-                <span class="active" data-lang="en">– Tech-Savvy CEO</span>
-                <span data-lang="fr">– PDG Tech-Avicée</span>
-            </cite>
+            <p>"AlphaGuard turned our IT chaos into cosmic order — fast, fierce, and fabulous!"</p>
+            <cite>– Tech-Savvy CEO</cite>
         </div>
     </section>
 
-    <footer>
-        <p data-en="&copy; 2025 AlphaGuard IT. Empowering tech with geek-chic precision." data-fr="&copy; 2025 AlphaGuard IT. Empowerment de la tech avec précision geek-chic.">
-            <span class="active" data-lang="en">&copy; 2025 AlphaGuard IT. Empowering tech with geek-chic precision.</span>
-            <span data-lang="fr">&copy; 2025 AlphaGuard IT. Empowerment de la tech avec précision geek-chic.</span>
-        </p>
+    <!-- OKTO-STYLE FOOTER -->
+    <footer class="main-footer">
+        <div class="footer-top">
+            <div>
+                <div class="footer-logo">AlphaGuard IT</div>
+                <p data-lang="en">Thank you for your trust. We're convinced this is the start of a long and successful partnership.</p>
+                <p data-lang="fr">Merci de votre confiance. Nous sommes convaincus que c’est le début d’un partenariat long et fructueux.</p>
+            </div>
+            <div>
+                <h4><span data-lang="en">Partners</span><span data-lang="fr">Partenaires</span></h4>
+                <ul>
+                    <li>Microsoft 365</li>
+                    <li>Azure</li>
+                    <li>Veeam</li>
+                    <li>NinjaOne</li>
+                    <li>KnowBe4</li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <ul>
+                    <li>+1 (405) 555-0199</li>
+                    <li>hello@alphaguardit.com</li>
+                    <li>Oklahoma City, OK</li>
+                </ul>
+            </div>
+        </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-links">
+                <a href="#"><i class="fas fa-home"></i> <span data-lang="en">Home</span><span data-lang="fr">Accueil</span></a>
+                <a href="#"><i class="fas fa-phone"></i> <span data-lang="en">Contact</span><span data-lang="fr">Contact</span></a>
+                <a href="#"><i class="fas fa-cogs"></i> <span data-lang="en">Services</span><span data-lang="fr">Services</span></a>
+                <a href="#"><i class="fas fa-shield-alt"></i> <span data-lang="en">Privacy</span><span data-lang="fr">Confidentialité</span></a>
+            </div>
+            <div class="social-icons">
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            </div>
+        </div>
     </footer>
 
     <!-- Chatbot Button -->
-    <button class="chatbot-btn" onclick="openModal()" title="Chat with Us">
+    <button class="chatbot-btn" onclick="openModal()">
         <i class="fas fa-comments"></i>
     </button>
 
-    <!-- Chatbot Modal -->
+    <!-- Chat Modal -->
     <div id="chatModal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h2 style="color: var(--rose-gold);" data-en="How Can I Guard Your Galaxy Today?" data-fr="Comment Puis-Je Protéger Votre Galaxie Aujourd'hui ?">
-                <span class="active" data-lang="en">How Can I Guard Your Galaxy Today?</span>
-                <span data-lang="fr">Comment Puis-Je Protéger Votre Galaxie Aujourd'hui ?</span>
-            </h2>
-            <p data-en="Drop a message—I'll beam it straight to the captain (that's me!)" data-fr="Laissez un message—je le transmettrai directement au capitaine (c'est moi !)">
-                <span class="active" data-lang="en">Drop a message—I'll beam it straight to the captain (that's me!)</span>
-                <span data-lang="fr">Laissez un message—je le transmettrai directement au capitaine (c'est moi !)</span>
-            </p>
-            <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+            <span class="close" onclick="closeModal()">×</span>
+            <h2 style="color:var(--rose-gold);"><span data-lang="en">How Can I Guard Your Galaxy Today?</span><span data-lang="fr">Comment Protéger Votre Galaxie Aujourd'hui ?</span></h2>
+            <form name="contact" method="POST" data-netlify="true">
                 <input type="hidden" name="form-name" value="contact">
                 <input type="text" name="name" placeholder="Your Name" required>
                 <input type="email" name="email" placeholder="Your Email" required>
-                <input type="tel" name="phone" placeholder="Phone (for SMS alerts)">
-                <textarea name="message" placeholder="Tell me about your IT orbit..." rows="4" required></textarea>
-                <button type="submit">Send Secure Signal</button>
+                <input type="tel" name="phone" placeholder="Phone (optional)">
+                <textarea name="message" placeholder="Your message..." rows="5" required></textarea>
+                <button type="submit">Send Message</button>
             </form>
         </div>
     </div>
 
-    <!-- Service Modal -->
+    <!-- Service Detail Modal -->
     <div id="serviceModal" class="modal">
-        <div class="modal-content service-modal">
-            <span class="close" onclick="closeServiceModal()">&times;</span>
+        <div class="modal-content">
+            <span class="close" onclick="closeServiceModal()">×</span>
             <div id="serviceContent"></div>
         </div>
     </div>
@@ -492,26 +272,61 @@
 
         function toggleLang() {
             currentLang = currentLang === 'en' ? 'fr' : 'en';
-            document.querySelectorAll('[data-lang]').forEach(el => {
-                el.classList.remove('active');
-                if (el.getAttribute('data-lang') === currentLang) el.classList.add('active');
+            document.querySelectorAll('[data-lang]').forEach(span => {
+                span.style.display = (span.getAttribute('data-lang') === currentLang) ? 'inline' : 'none';
             });
             document.documentElement.lang = currentLang;
         }
 
         function openModal() {
-            document.getElementById('chatModal').style.display = 'block';
+            document.getElementById('chatModal').style.display = 'flex';
         }
         function closeModal() {
             document.getElementById('chatModal').style.display = 'none';
         }
-        function togglePanel(el) {
-            const panel = el.nextElementSibling;
+
+        function togglePanel(btn) {
+            const panel = btn.nextElementSibling;
             panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
         }
+
+        // FULLY FINISHED openServiceModal function (English + French)
         function openServiceModal(type) {
             const content = document.getElementById('serviceContent');
-            const details = {
+            const texts = {
                 cyber: {
-                    en: '<h3>Cybersecurity Details</h3><p>Advanced threat detection with AI-driven alerts. Includes endpoint protection and compliance checks.</p>',
-                    fr: '<h3>Dét
+                    en: `<h3>Cybersecurity</h3>
+                          <p>Advanced threat detection with AI-driven alerts. Includes endpoint protection, dark web monitoring, phishing training, and full compliance support (HIPAA, CMMC, etc.).</p>`,
+                    fr: `<h3>Cybersécurité</h3>
+                          <p>Détection avancée des menaces avec alertes pilotées par IA. Inclut protection des terminaux, surveillance du dark web, formation anti-phishing et conformité complète (HIPAA, CMMC, etc.).</p>`
+                },
+                cloud: {
+                    en: `<h3>Cloud Management</h3>
+                          <p>Seamless migrations to Microsoft 365, Azure, AWS. Ongoing cost optimization, automated backups, and 99.9% uptime guarantee.</p>`,
+                    fr: `<h3>Gestion Cloud</h3>
+                          <p>Migrations fluides vers Microsoft 365, Azure, AWS. Optimisation continue des coûts, sauvegardes automatisées et garantie de disponibilité 99,9%.</p>`
+                },
+                support: {
+                    en: `<h3>Priority Support</h3>
+                          <p>24/7 remote helpdesk, proactive monitoring, dedicated account manager, and quarterly business reviews.</p>`,
+                    fr: `<h3>Support Prioritaire</h3>
+                          <p>Assistance à distance 24/7, surveillance proactive, gestionnaire de compte dédié et revues d'affaires trimestrielles.</p>`
+                }
+            };
+            content.innerHTML = texts[type][currentLang];
+            document.getElementById('serviceModal').style.display = 'flex';
+        }
+
+        function closeServiceModal() {
+            document.getElementById('serviceModal').style.display = 'none';
+        }
+
+        // Close modals when clicking outside
+        window.onclick = function(e) => {
+            if (e.target.classList.contains('modal')) {
+                e.target.style.display = 'none';
+            }
+        };
+    </script>
+</body>
+</html>
