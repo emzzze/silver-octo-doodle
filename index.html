@@ -8,24 +8,47 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --navy: #1A2A44;
+            --navy: #0A1628; /* Darker blue */
             --rose-gold: #E8B4B8;
-            --forest-green: #2E4B3B;
+            --lime-green: #32CD32; /* Popping green */
             --white: #FFFFFF;
             --light-gray: #F5F5F5;
         }
         body {
             margin: 0;
             font-family: 'Lato', sans-serif;
-            background: var(--navy);
+            background: var(--navy) url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M10 50 L20 40 L30 50 L40 30 L50 50 L60 40 L70 50 L80 30 L90 50" stroke="%2332CD32" stroke-width="0.5" fill="none" opacity="0.1"/><path d="M5 20 L15 10 L25 20 L35 5 L45 20 L55 10 L65 20 L75 5 L85 20" stroke="%2332CD32" stroke-width="0.3" fill="none" opacity="0.08"/></svg>') repeat; /* Subtle green circuit pattern */
             color: var(--white);
             line-height: 1.6;
+            transition: all 0.3s ease;
         }
         header {
-            background: linear-gradient(to bottom, var(--navy), var(--forest-green));
+            background: linear-gradient(to bottom, var(--navy), var(--lime-green));
             padding: 2rem;
             text-align: center;
             position: relative;
+        }
+        .toggles {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            display: flex;
+            gap: 0.5rem;
+        }
+        .toggle-btn {
+            background: rgba(232, 180, 184, 0.2);
+            border: 1px solid var(--rose-gold);
+            color: var(--rose-gold);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.3s, transform 0.2s;
+        }
+        .toggle-btn:hover {
+            background: var(--rose-gold);
+            color: var(--navy);
+            transform: scale(1.05);
         }
         h1 {
             font-family: 'Poppins', sans-serif;
@@ -40,7 +63,7 @@
         .woman-owned {
             position: absolute;
             top: 1rem;
-            right: 1rem;
+            left: 1rem;
             background: var(--rose-gold);
             color: var(--navy);
             padding: 0.5rem 1rem;
@@ -56,7 +79,7 @@
         h2 {
             font-family: 'Poppins', sans-serif;
             color: var(--rose-gold);
-            border-bottom: 2px solid var(--forest-green);
+            border-bottom: 2px solid var(--lime-green);
             padding-bottom: 0.5rem;
         }
         .services-grid, .packages {
@@ -69,8 +92,14 @@
             padding: 1.5rem;
             border-radius: 10px;
             border-left: 4px solid var(--rose-gold);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
         }
-        .package-card h3 {
+        .service-card:hover, .package-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(50, 205, 50, 0.3); /* Green glow on hover */
+        }
+        .service-card h3, .package-card h3 {
             color: var(--rose-gold);
         }
         ul {
@@ -78,11 +107,30 @@
             padding: 0;
         }
         li:before {
-            content: "\f058"; /* Font Awesome check-circle */
-            color: var(--forest-green);
+            content: "\f058";
+            color: var(--lime-green);
             font-family: 'Font Awesome 6 Free';
             font-weight: 900;
             margin-right: 0.5rem;
+        }
+        .accordion {
+            cursor: pointer;
+            background: var(--lime-green);
+            color: var(--navy);
+            padding: 0.5rem;
+            border-radius: 5px;
+            margin-top: 1rem;
+            transition: background 0.3s;
+        }
+        .accordion:hover {
+            background: var(--rose-gold);
+        }
+        .panel {
+            display: none;
+            padding: 1rem;
+            background: rgba(50, 205, 50, 0.1);
+            border-radius: 5px;
+            margin-top: 0.5rem;
         }
         .testimonial {
             background: rgba(232, 180, 184, 0.1);
@@ -105,6 +153,10 @@
             cursor: pointer;
             box-shadow: 0 4px 8px rgba(0,0,0,0.3);
             z-index: 1000;
+            transition: transform 0.3s;
+        }
+        .chatbot-btn:hover {
+            transform: scale(1.1);
         }
         .modal {
             display: none;
@@ -115,6 +167,11 @@
             height: 100%;
             background: rgba(0,0,0,0.7);
             z-index: 1001;
+            animation: fadeIn 0.3s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
         .modal-content {
             background: var(--navy);
@@ -140,105 +197,239 @@
         input, textarea {
             margin-bottom: 1rem;
             padding: 0.5rem;
-            border: 1px solid var(--forest-green);
+            border: 1px solid var(--lime-green);
             border-radius: 5px;
             background: var(--light-gray);
             color: var(--navy);
         }
         button[type="submit"] {
-            background: var(--forest-green);
+            background: var(--lime-green);
             color: var(--white);
             border: none;
             padding: 0.75rem;
             border-radius: 5px;
             cursor: pointer;
             font-weight: bold;
+            transition: background 0.3s;
+        }
+        button[type="submit"]:hover {
+            background: var(--rose-gold);
+            color: var(--navy);
+        }
+        .service-modal {
+            max-width: 600px;
         }
         footer {
             text-align: center;
             padding: 1rem;
-            background: var(--forest-green);
+            background: var(--lime-green);
+            color: var(--navy);
+        }
+        [data-lang="fr"] { display: none; }
+        [data-lang="fr"].active { display: block; }
+        [data-lang="en"].active { display: block; }
+        .price {
+            font-weight: bold;
+            color: var(--lime-green);
         }
         @media (max-width: 768px) {
             h1 { font-size: 2rem; }
             section { padding: 1rem; }
+            .toggles { flex-direction: column; }
         }
     </style>
 </head>
 <body>
     <header>
-        <div class="woman-owned">Woman-Owned <i class="fas fa-crown"></i></div>
-        <h1>AlphaGuard IT</h1>
-        <p>Your Geek-Chic Guardian for Secure, Simplified IT Solutions</p>
+        <div class="woman-owned" data-en="Woman-Owned <i class='fas fa-crown'></i>" data-fr="Entreprise dirigée par une femme <i class='fas fa-crown'></i>">
+            <span class="active" data-lang="en">Woman-Owned <i class="fas fa-crown"></i></span>
+            <span data-lang="fr">Entreprise dirigée par une femme <i class="fas fa-crown"></i></span>
+        </div>
+        <div class="toggles">
+            <button class="toggle-btn" onclick="toggleLang()">EN / FR</button>
+            <button class="toggle-btn" onclick="toggleCurrency()">USD / CAD</button>
+        </div>
+        <h1 data-en="AlphaGuard IT" data-fr="AlphaGuard IT">
+            <span class="active" data-lang="en">AlphaGuard IT</span>
+            <span data-lang="fr">AlphaGuard IT</span>
+        </h1>
+        <p data-en="Your Geek-Chic Guardian for Secure, Simplified IT Solutions" data-fr="Votre Gardien Geek-Chic pour des Solutions TI Sécurisées et Simplifiées">
+            <span class="active" data-lang="en">Your Geek-Chic Guardian for Secure, Simplified IT Solutions</span>
+            <span data-lang="fr">Votre Gardien Geek-Chic pour des Solutions TI Sécurisées et Simplifiées</span>
+        </p>
     </header>
 
     <section id="services">
-        <h2>Our Services</h2>
-        <p>From proactive cybersecurity to seamless cloud management, we handle the tech so you can focus on growth. Tailored for small businesses with a feminine edge.</p>
+        <h2 data-en="Our Services" data-fr="Nos Services">
+            <span class="active" data-lang="en">Our Services</span>
+            <span data-lang="fr">Nos Services</span>
+        </h2>
+        <p data-en="From proactive cybersecurity to seamless cloud management, we handle the tech so you can focus on growth. Tailored for small businesses with a feminine edge." data-fr="De la cybersécurité proactive à la gestion cloud fluide, nous gérons la tech pour que vous puissiez vous concentrer sur la croissance. Adapté aux petites entreprises avec une touche féminine.">
+            <span class="active" data-lang="en">From proactive cybersecurity to seamless cloud management, we handle the tech so you can focus on growth. Tailored for small businesses with a feminine edge.</span>
+            <span data-lang="fr">De la cybersécurité proactive à la gestion cloud fluide, nous gérons la tech pour que vous puissiez vous concentrer sur la croissance. Adapté aux petites entreprises avec une touche féminine.</span>
+        </p>
         <div class="services-grid">
-            <div class="service-card">
+            <div class="service-card" onclick="openServiceModal('cyber')">
                 <i class="fas fa-shield-alt" style="color: var(--rose-gold); font-size: 2rem;"></i>
-                <h3>Cybersecurity</h3>
-                <p>Shield your data with advanced threat detection—no jargon, just protection.</p>
+                <h3 data-en="Cybersecurity" data-fr="Cybersécurité">
+                    <span class="active" data-lang="en">Cybersecurity</span>
+                    <span data-lang="fr">Cybersécurité</span>
+                </h3>
+                <p data-en="Shield your data with advanced threat detection—no jargon, just protection." data-fr="Protégez vos données avec une détection avancée des menaces—sans jargon, juste protection.">
+                    <span class="active" data-lang="en">Shield your data with advanced threat detection—no jargon, just protection.</span>
+                    <span data-lang="fr">Protégez vos données avec une détection avancée des menaces—sans jargon, juste protection.</span>
+                </p>
             </div>
-            <div class="service-card">
+            <div class="service-card" onclick="openServiceModal('cloud')">
                 <i class="fas fa-cloud" style="color: var(--rose-gold); font-size: 2rem;"></i>
-                <h3>Cloud Management</h3>
-                <p>Streamline your operations with secure, scalable cloud setups.</p>
+                <h3 data-en="Cloud Management" data-fr="Gestion Cloud">
+                    <span class="active" data-lang="en">Cloud Management</span>
+                    <span data-lang="fr">Gestion Cloud</span>
+                </h3>
+                <p data-en="Streamline your operations with secure, scalable cloud setups." data-fr="Rationalisez vos opérations avec des configurations cloud sécurisées et évolutives.">
+                    <span class="active" data-lang="en">Streamline your operations with secure, scalable cloud setups.</span>
+                    <span data-lang="fr">Rationalisez vos opérations avec des configurations cloud sécurisées et évolutives.</span>
+                </p>
             </div>
-            <div class="service-card">
+            <div class="service-card" onclick="openServiceModal('support')">
                 <i class="fas fa-headset" style="color: var(--rose-gold); font-size: 2rem;"></i>
-                <h3>Priority Support</h3>
-                <p>24/7 geek squad ready to geek out on your issues.</p>
+                <h3 data-en="Priority Support" data-fr="Support Prioritaire">
+                    <span class="active" data-lang="en">Priority Support</span>
+                    <span data-lang="fr">Support Prioritaire</span>
+                </h3>
+                <p data-en="24/7 geek squad ready to geek out on your issues." data-fr="Équipe geek 24/7 prête à plonger dans vos problèmes.">
+                    <span class="active" data-lang="en">24/7 geek squad ready to geek out on your issues.</span>
+                    <span data-lang="fr">Équipe geek 24/7 prête à plonger dans vos problèmes.</span>
+                </p>
             </div>
         </div>
     </section>
 
-    <section id="packages" class="packages">
-        <h2>Pricing Packages</h2>
-        <div class="package-card">
-            <h3>Essential</h3>
-            <ul>
-                <li>Basic security monitoring</li>
-                <li>Unlimited email support</li>
-                <li>Monthly health check</li>
-            </ul>
-            <p><strong>$99/month</strong></p>
-        </div>
-        <div class="package-card">
-            <h3>Standard</h3>
-            <ul>
-                <li>Advanced cybersecurity</li>
-                <li>Cloud backups</li>
-                <li>Quarterly reports</li>
-            </ul>
-            <p><strong>$199/month</strong></p>
-        </div>
-        <div class="package-card">
-            <h3>Complete</h3>
-            <ul>
-                <li>Full strategic IT advisory</li>
-                <li>Custom integrations</li>
-                <li>Dedicated vCIO</li>
-            </ul>
-            <p><strong>$399/month</strong></p>
+    <section id="packages">
+        <h2 data-en="Pricing Packages (per device/month)" data-fr="Forfaits Tarifs (par appareil/mois)">
+            <span class="active" data-lang="en">Pricing Packages (per device/month)</span>
+            <span data-lang="fr">Forfaits Tarifs (par appareil/mois)</span>
+        </h2>
+        <div class="packages">
+            <div class="package-card">
+                <h3 data-en="Essential" data-fr="Essentiel">
+                    <span class="active" data-lang="en">Essential</span>
+                    <span data-lang="fr">Essentiel</span>
+                </h3>
+                <ul>
+                    <li data-en="Basic security monitoring" data-fr="Surveillance de sécurité de base">
+                        <span class="active" data-lang="en">Basic security monitoring</span>
+                        <span data-lang="fr">Surveillance de sécurité de base</span>
+                    </li>
+                    <li data-en="Unlimited email support" data-fr="Support email illimité">
+                        <span class="active" data-lang="en">Unlimited email support</span>
+                        <span data-lang="fr">Support email illimité</span>
+                    </li>
+                    <li data-en="Monthly health check" data-fr="Vérification santé mensuelle">
+                        <span class="active" data-lang="en">Monthly health check</span>
+                        <span data-lang="fr">Vérification santé mensuelle</span>
+                    </li>
+                </ul>
+                <p><span class="price" id="essential-price">$99</span>/month</p>
+                <div class="accordion" onclick="togglePanel(this)">More Details</div>
+                <div class="panel">
+                    <p data-en="Ideal for small setups—keeps things stable without overwhelm." data-fr="Idéal pour les petites configurations—maintient la stabilité sans surcharge.">
+                        <span class="active" data-lang="en">Ideal for small setups—keeps things stable without overwhelm.</span>
+                        <span data-lang="fr">Idéal pour les petites configurations—maintient la stabilité sans surcharge.</span>
+                    </p>
+                </div>
+            </div>
+            <div class="package-card">
+                <h3 data-en="Standard" data-fr="Standard">
+                    <span class="active" data-lang="en">Standard</span>
+                    <span data-lang="fr">Standard</span>
+                </h3>
+                <ul>
+                    <li data-en="Advanced cybersecurity" data-fr="Cybersécurité avancée">
+                        <span class="active" data-lang="en">Advanced cybersecurity</span>
+                        <span data-lang="fr">Cybersécurité avancée</span>
+                    </li>
+                    <li data-en="Cloud backups" data-fr="Sauvegardes cloud">
+                        <span class="active" data-lang="en">Cloud backups</span>
+                        <span data-lang="fr">Sauvegardes cloud</span>
+                    </li>
+                    <li data-en="Quarterly reports" data-fr="Rapports trimestriels">
+                        <span class="active" data-lang="en">Quarterly reports</span>
+                        <span data-lang="fr">Rapports trimestriels</span>
+                    </li>
+                </ul>
+                <p><span class="price" id="standard-price">$199</span>/month</p>
+                <div class="accordion" onclick="togglePanel(this)" data-en="More Details" data-fr="Plus de Détails">
+                    <span class="active" data-lang="en">More Details</span>
+                    <span data-lang="fr">Plus de Détails</span>
+                </div>
+                <div class="panel">
+                    <p data-en="Proactive protection with priority response." data-fr="Protection proactive avec réponse prioritaire.">
+                        <span class="active" data-lang="en">Proactive protection with priority response.</span>
+                        <span data-lang="fr">Protection proactive avec réponse prioritaire.</span>
+                    </p>
+                </div>
+            </div>
+            <div class="package-card">
+                <h3 data-en="Complete" data-fr="Complet">
+                    <span class="active" data-lang="en">Complete</span>
+                    <span data-lang="fr">Complet</span>
+                </h3>
+                <ul>
+                    <li data-en="Full strategic IT advisory" data-fr="Conseil TI stratégique complet">
+                        <span class="active" data-lang="en">Full strategic IT advisory</span>
+                        <span data-lang="fr">Conseil TI stratégique complet</span>
+                    </li>
+                    <li data-en="Custom integrations" data-fr="Intégrations personnalisées">
+                        <span class="active" data-lang="en">Custom integrations</span>
+                        <span data-lang="fr">Intégrations personnalisées</span>
+                    </li>
+                    <li data-en="Dedicated vCIO" data-fr="vCIO dédié">
+                        <span class="active" data-lang="en">Dedicated vCIO</span>
+                        <span data-lang="fr">vCIO dédié</span>
+                    </li>
+                </ul>
+                <p><span class="price" id="complete-price">$399</span>/month</p>
+                <div class="accordion" onclick="togglePanel(this)" data-en="More Details" data-fr="Plus de Détails">
+                    <span class="active" data-lang="en">More Details</span>
+                    <span data-lang="fr">Plus de Détails</span>
+                </div>
+                <div class="panel">
+                    <p data-en="All-in-one growth partner with expert guidance." data-fr="Partenaire de croissance tout-en-un avec guidance experte.">
+                        <span class="active" data-lang="en">All-in-one growth partner with expert guidance.</span>
+                        <span data-lang="fr">Partenaire de croissance tout-en-un avec guidance experte.</span>
+                    </p>
+                </div>
+            </div>
         </div>
     </section>
 
     <section id="testimonials">
-        <h2>What Our Clients Say</h2>
+        <h2 data-en="What Our Clients Say" data-fr="Ce Que Disent Nos Clients">
+            <span class="active" data-lang="en">What Our Clients Say</span>
+            <span data-lang="fr">Ce Que Disent Nos Clients</span>
+        </h2>
         <div class="testimonial">
-            <p>"AlphaGuard turned our IT chaos into cosmic order—fast, fierce, and fabulous!"</p>
-            <cite>– Tech-Savvy CEO</cite>
+            <p data-en="&quot;AlphaGuard turned our IT chaos into cosmic order—fast, fierce, and fabulous!&quot;" data-fr="&quot;AlphaGuard a transformé notre chaos TI en ordre cosmique—rapide, féroce et fabuleux !&quot;">
+                <span class="active" data-lang="en">&quot;AlphaGuard turned our IT chaos into cosmic order—fast, fierce, and fabulous!&quot;</span>
+                <span data-lang="fr">&quot;AlphaGuard a transformé notre chaos TI en ordre cosmique—rapide, féroce et fabuleux !&quot;</span>
+            </p>
+            <cite data-en="– Tech-Savvy CEO" data-fr="– PDG Tech-Avicée">
+                <span class="active" data-lang="en">– Tech-Savvy CEO</span>
+                <span data-lang="fr">– PDG Tech-Avicée</span>
+            </cite>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2025 AlphaGuard IT. Empowering tech with geek-chic precision.</p>
+        <p data-en="&copy; 2025 AlphaGuard IT. Empowering tech with geek-chic precision." data-fr="&copy; 2025 AlphaGuard IT. Empowerment de la tech avec précision geek-chic.">
+            <span class="active" data-lang="en">&copy; 2025 AlphaGuard IT. Empowering tech with geek-chic precision.</span>
+            <span data-lang="fr">&copy; 2025 AlphaGuard IT. Empowerment de la tech avec précision geek-chic.</span>
+        </p>
     </footer>
 
     <!-- Chatbot Button -->
-    <button class="chatbot-btn" onclick="openModal()" title="Chat with Us">
+    <button class="chatbot-btn" onclick="openModal()" title="Chat with Us" data-en="Chat with Us" data-fr="Discuter avec Nous">
         <i class="fas fa-comments"></i>
     </button>
 
@@ -246,31 +437,102 @@
     <div id="chatModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
-            <h2 style="color: var(--rose-gold);">How Can I Guard Your Galaxy Today?</h2>
-            <p>Drop a message—I'll beam it straight to the captain (that's me!)</p>
+            <h2 style="color: var(--rose-gold);" data-en="How Can I Guard Your Galaxy Today?" data-fr="Comment Puis-Je Protéger Votre Galaxie Aujourd'hui ?">
+                <span class="active" data-lang="en">How Can I Guard Your Galaxy Today?</span>
+                <span data-lang="fr">Comment Puis-Je Protéger Votre Galaxie Aujourd'hui ?</span>
+            </h2>
+            <p data-en="Drop a message—I'll beam it straight to the captain (that's me!)" data-fr="Laissez un message—je le transmettrai directement au capitaine (c'est moi !)">
+                <span class="active" data-lang="en">Drop a message—I'll beam it straight to the captain (that's me!)</span>
+                <span data-lang="fr">Laissez un message—je le transmettrai directement au capitaine (c'est moi !)</span>
+            </p>
             <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
                 <input type="hidden" name="form-name" value="contact">
-                <input type="text" name="name" placeholder="Your Name" required>
-                <input type="email" name="email" placeholder="Your Email" required>
-                <input type="tel" name="phone" placeholder="Phone (for SMS alerts)">
-                <textarea name="message" placeholder="Tell me about your IT orbit..." rows="4" required></textarea>
-                <button type="submit">Send Secure Signal</button>
+                <input type="text" name="name" placeholder="Your Name" data-en-placeholder="Your Name" data-fr-placeholder="Votre Nom" required>
+                <input type="email" name="email" placeholder="Your Email" data-en-placeholder="Your Email" data-fr-placeholder="Votre Email" required>
+                <input type="tel" name="phone" placeholder="Phone (for SMS alerts)" data-en-placeholder="Phone (for SMS alerts)" data-fr-placeholder="Téléphone (pour alertes SMS)">
+                <textarea name="message" placeholder="Tell me about your IT orbit..." data-en-placeholder="Tell me about your IT orbit..." data-fr-placeholder="Parlez-moi de votre orbite TI..." rows="4" required></textarea>
+                <button type="submit" data-en="Send Secure Signal" data-fr="Envoyer Signal Sécurisé">
+                    <span class="active" data-lang="en">Send Secure Signal</span>
+                    <span data-lang="fr">Envoyer Signal Sécurisé</span>
+                </button>
             </form>
         </div>
     </div>
 
+    <!-- Service Modals -->
+    <div id="serviceModal" class="modal">
+        <div class="modal-content service-modal">
+            <span class="close" onclick="closeServiceModal()">&times;</span>
+            <div id="serviceContent"></div>
+        </div>
+    </div>
+
     <script>
+        let currentLang = 'en';
+        let currentCurrency = 'USD';
+        const cadRate = 1.35;
+
+        function toggleLang() {
+            currentLang = currentLang === 'en' ? 'fr' : 'en';
+            document.querySelectorAll('[data-lang]').forEach(el => {
+                el.classList.remove('active');
+                el.querySelector(`[data-lang="${currentLang}"]`)?.classList.add('active');
+                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                    el.placeholder = el.getAttribute(`data-${currentLang}-placeholder`) || el.placeholder;
+                }
+            });
+            document.documentElement.lang = currentLang;
+        }
+
+        function toggleCurrency() {
+            currentCurrency = currentCurrency === 'USD' ? 'CAD' : 'USD';
+            const rate = currentCurrency === 'CAD' ? cadRate : 1 / cadRate;
+            const symbol = currentCurrency === 'CAD' ? 'C$' : '$';
+            document.querySelectorAll('.price').forEach(priceEl => {
+                let base = 99; // Default, but calculate per
+                if (priceEl.id === 'standard-price') base = 199;
+                else if (priceEl.id === 'complete-price') base = 399;
+                priceEl.textContent = `${symbol}${Math.round(base * rate)}`;
+            });
+        }
+
         function openModal() {
             document.getElementById('chatModal').style.display = 'block';
         }
         function closeModal() {
             document.getElementById('chatModal').style.display = 'none';
         }
+        function togglePanel(el) {
+            const panel = el.nextElementSibling;
+            panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+        }
+        function openServiceModal(type) {
+            const content = document.getElementById('serviceContent');
+            const details = {
+                cyber: {
+                    en: '<h3>Cybersecurity Details</h3><p>Advanced threat detection with AI-driven alerts. Includes endpoint protection and compliance checks.</p>',
+                    fr: '<h3>Détails Cybersécurité</h3><p>Détection avancée des menaces avec alertes IA. Inclut protection des points d\'extrémité et vérifications de conformité.</p>'
+                },
+                cloud: {
+                    en: '<h3>Cloud Management Details</h3><p>Seamless migrations to Azure/AWS. Cost optimization and 99.9% uptime guarantee.</p>',
+                    fr: '<h3>Détails Gestion Cloud</h3><p>Migrations fluides vers Azure/AWS. Optimisation des coûts et garantie de 99,9 % de disponibilité.</p>'
+                },
+                support: {
+                    en: '<h3>Priority Support Details</h3><p>24/7 remote access, ticket system, and quarterly training sessions.</p>',
+                    fr: '<h3>Détails Support Prioritaire</h3><p>Accès distant 24/7, système de tickets et sessions de formation trimestrielles.</p>'
+                }
+            };
+            content.innerHTML = details[type][currentLang];
+            document.getElementById('serviceModal').style.display = 'block';
+        }
+        function closeServiceModal() {
+            document.getElementById('serviceModal').style.display = 'none';
+        }
         window.onclick = function(event) {
-            const modal = document.getElementById('chatModal');
-            if (event.target == modal) {
-                modal.style.display = 'none';
-            }
+            const chatModal = document.getElementById('chatModal');
+            const serviceModal = document.getElementById('serviceModal');
+            if (event.target == chatModal) chatModal.style.display = 'none';
+            if (event.target == serviceModal) serviceModal.style.display = 'none';
         }
     </script>
 </body>
