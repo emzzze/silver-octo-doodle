@@ -3,27 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AlphaGuard IT – Your Geek-Chic IT Guardian</title>
+    <title data-en="AlphaGuard IT – Your Geek-Chic IT Guardian" data-fr="AlphaGuard IT – Votre Gardien Geek-Chic des TI">AlphaGuard IT – Your Geek-Chic IT Guardian</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Lato:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --navy: #0A1628; /* Darker blue */
             --rose-gold: #E8B4B8;
-            --lime-green: #32CD32; /* Popping green */
+            --sea-green: #4CAF50; /* Toned-down harmonious green */
             --white: #FFFFFF;
             --light-gray: #F5F5F5;
         }
         body {
             margin: 0;
             font-family: 'Lato', sans-serif;
-            background: var(--navy) url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M10 50 L20 40 L30 50 L40 30 L50 50 L60 40 L70 50 L80 30 L90 50" stroke="%2332CD32" stroke-width="0.5" fill="none" opacity="0.1"/><path d="M5 20 L15 10 L25 20 L35 5 L45 20 L55 10 L65 20 L75 5 L85 20" stroke="%2332CD32" stroke-width="0.3" fill="none" opacity="0.08"/></svg>') repeat; /* Subtle green circuit pattern */
+            background: 
+                var(--navy),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 661 360"><defs><pattern id="circuit" patternUnits="userSpaceOnUse" width="661" height="360"><path d="M10 180 L20 160 L30 180 L40 120 L50 180 L60 160 L70 180 L80 120 L90 180" stroke="%234CAF50" stroke-width="0.5" fill="none" opacity="0.1"/><path d="M5 80 L15 40 L25 80 L35 20 L45 80 L55 40 L65 80 L75 20 L85 80" stroke="%234CAF50" stroke-width="0.3" fill="none" opacity="0.08"/><path d="M100 200 L110 220 L120 200 L130 240 L140 200 L150 220 L160 200 L170 240 L180 200" stroke="%234CAF50" stroke-width="0.5" fill="none" opacity="0.1"/><path d="M200 100 L210 80 L220 100 L230 60 L240 100 L250 80 L260 100 L270 60 L280 100" stroke="%234CAF50" stroke-width="0.3" fill="none" opacity="0.08"/><circle cx="300" cy="150" r="2" fill="%234CAF50" opacity="0.05"/><line x1="300" y1="150" x2="320" y2="170" stroke="%234CAF50" stroke-width="0.5" opacity="0.1"/><line x1="320" y1="170" x2="340" y2="150" stroke="%234CAF50" stroke-width="0.5" opacity="0.1"/><path d="M400 50 L420 70 L440 50 L460 90 L480 50 L500 70 L520 50 L540 90 L560 50" stroke="%234CAF50" stroke-width="0.5" fill="none" opacity="0.1"/><path d="M350 250 L370 270 L390 250 L410 290 L430 250 L450 270 L470 250 L490 290 L510 250" stroke="%234CAF50" stroke-width="0.3" fill="none" opacity="0.08"/></pattern></defs><rect width="100%" height="100%" fill="url(%23circuit)"/></svg>') repeat; /* Integrated left circuit pattern in green-on-green */
             color: var(--white);
             line-height: 1.6;
             transition: all 0.3s ease;
         }
         header {
-            background: linear-gradient(to bottom, var(--navy), var(--lime-green));
+            background: linear-gradient(to bottom, var(--navy), var(--sea-green));
             padding: 2rem;
             text-align: center;
             position: relative;
@@ -79,7 +81,7 @@
         h2 {
             font-family: 'Poppins', sans-serif;
             color: var(--rose-gold);
-            border-bottom: 2px solid var(--lime-green);
+            border-bottom: 2px solid var(--sea-green);
             padding-bottom: 0.5rem;
         }
         .services-grid, .packages {
@@ -88,7 +90,7 @@
             gap: 1rem;
         }
         .service-card, .package-card {
-            background: rgba(46, 75, 59, 0.2);
+            background: rgba(76, 175, 80, 0.2);
             padding: 1.5rem;
             border-radius: 10px;
             border-left: 4px solid var(--rose-gold);
@@ -97,7 +99,7 @@
         }
         .service-card:hover, .package-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(50, 205, 50, 0.3); /* Green glow on hover */
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3); /* Green glow on hover */
         }
         .service-card h3, .package-card h3 {
             color: var(--rose-gold);
@@ -108,14 +110,14 @@
         }
         li:before {
             content: "\f058";
-            color: var(--lime-green);
+            color: var(--sea-green);
             font-family: 'Font Awesome 6 Free';
             font-weight: 900;
             margin-right: 0.5rem;
         }
         .accordion {
             cursor: pointer;
-            background: var(--lime-green);
+            background: var(--sea-green);
             color: var(--navy);
             padding: 0.5rem;
             border-radius: 5px;
@@ -128,7 +130,7 @@
         .panel {
             display: none;
             padding: 1rem;
-            background: rgba(50, 205, 50, 0.1);
+            background: rgba(76, 175, 80, 0.1);
             border-radius: 5px;
             margin-top: 0.5rem;
         }
@@ -197,13 +199,13 @@
         input, textarea {
             margin-bottom: 1rem;
             padding: 0.5rem;
-            border: 1px solid var(--lime-green);
+            border: 1px solid var(--sea-green);
             border-radius: 5px;
             background: var(--light-gray);
             color: var(--navy);
         }
         button[type="submit"] {
-            background: var(--lime-green);
+            background: var(--sea-green);
             color: var(--white);
             border: none;
             padding: 0.75rem;
@@ -222,7 +224,7 @@
         footer {
             text-align: center;
             padding: 1rem;
-            background: var(--lime-green);
+            background: var(--sea-green);
             color: var(--navy);
         }
         [data-lang="fr"] { display: none; }
@@ -230,7 +232,7 @@
         [data-lang="en"].active { display: block; }
         .price {
             font-weight: bold;
-            color: var(--lime-green);
+            color: var(--sea-green);
         }
         @media (max-width: 768px) {
             h1 { font-size: 2rem; }
@@ -246,8 +248,10 @@
             <span data-lang="fr">Entreprise dirigée par une femme <i class="fas fa-crown"></i></span>
         </div>
         <div class="toggles">
-            <button class="toggle-btn" onclick="toggleLang()">EN / FR</button>
-            <button class="toggle-btn" onclick="toggleCurrency()">USD / CAD</button>
+            <button class="toggle-btn" onclick="toggleLang()" data-en="EN / FR" data-fr="FR / EN">
+                <span class="active" data-lang="en">EN / FR</span>
+                <span data-lang="fr">FR / EN</span>
+            </button>
         </div>
         <h1 data-en="AlphaGuard IT" data-fr="AlphaGuard IT">
             <span class="active" data-lang="en">AlphaGuard IT</span>
@@ -330,8 +334,11 @@
                         <span data-lang="fr">Vérification santé mensuelle</span>
                     </li>
                 </ul>
-                <p><span class="price" id="essential-price">$99</span>/month</p>
-                <div class="accordion" onclick="togglePanel(this)">More Details</div>
+                <p><span class="price">$99</span>/month</p>
+                <div class="accordion" onclick="togglePanel(this)" data-en="More Details" data-fr="Plus de Détails">
+                    <span class="active" data-lang="en">More Details</span>
+                    <span data-lang="fr">Plus de Détails</span>
+                </div>
                 <div class="panel">
                     <p data-en="Ideal for small setups—keeps things stable without overwhelm." data-fr="Idéal pour les petites configurations—maintient la stabilité sans surcharge.">
                         <span class="active" data-lang="en">Ideal for small setups—keeps things stable without overwhelm.</span>
@@ -358,7 +365,7 @@
                         <span data-lang="fr">Rapports trimestriels</span>
                     </li>
                 </ul>
-                <p><span class="price" id="standard-price">$199</span>/month</p>
+                <p><span class="price">$199</span>/month</p>
                 <div class="accordion" onclick="togglePanel(this)" data-en="More Details" data-fr="Plus de Détails">
                     <span class="active" data-lang="en">More Details</span>
                     <span data-lang="fr">Plus de Détails</span>
@@ -389,7 +396,7 @@
                         <span data-lang="fr">vCIO dédié</span>
                     </li>
                 </ul>
-                <p><span class="price" id="complete-price">$399</span>/month</p>
+                <p><span class="price">$399</span>/month</p>
                 <div class="accordion" onclick="togglePanel(this)" data-en="More Details" data-fr="Plus de Détails">
                     <span class="active" data-lang="en">More Details</span>
                     <span data-lang="fr">Plus de Détails</span>
@@ -429,7 +436,7 @@
     </footer>
 
     <!-- Chatbot Button -->
-    <button class="chatbot-btn" onclick="openModal()" title="Chat with Us" data-en="Chat with Us" data-fr="Discuter avec Nous">
+    <button class="chatbot-btn" onclick="openModal()" title="Chat with Us" data-en-title="Chat with Us" data-fr-title="Discuter avec Nous">
         <i class="fas fa-comments"></i>
     </button>
 
@@ -469,31 +476,28 @@
 
     <script>
         let currentLang = 'en';
-        let currentCurrency = 'USD';
-        const cadRate = 1.35;
 
         function toggleLang() {
             currentLang = currentLang === 'en' ? 'fr' : 'en';
+            // Update all elements with data-lang
             document.querySelectorAll('[data-lang]').forEach(el => {
                 el.classList.remove('active');
-                el.querySelector(`[data-lang="${currentLang}"]`)?.classList.add('active');
-                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-                    el.placeholder = el.getAttribute(`data-${currentLang}-placeholder`) || el.placeholder;
+                const activeSpan = el.querySelector(`[data-lang="${currentLang}"]`);
+                if (activeSpan) {
+                    activeSpan.classList.add('active');
                 }
             });
-            document.documentElement.lang = currentLang;
-        }
-
-        function toggleCurrency() {
-            currentCurrency = currentCurrency === 'USD' ? 'CAD' : 'USD';
-            const rate = currentCurrency === 'CAD' ? cadRate : 1 / cadRate;
-            const symbol = currentCurrency === 'CAD' ? 'C$' : '$';
-            document.querySelectorAll('.price').forEach(priceEl => {
-                let base = 99; // Default, but calculate per
-                if (priceEl.id === 'standard-price') base = 199;
-                else if (priceEl.id === 'complete-price') base = 399;
-                priceEl.textContent = `${symbol}${Math.round(base * rate)}`;
+            // Update placeholders for inputs
+            document.querySelectorAll('input[data-en-placeholder], textarea[data-en-placeholder]').forEach(el => {
+                el.placeholder = el.getAttribute(`data-${currentLang}-placeholder`) || el.placeholder;
             });
+            // Update titles for buttons/elements
+            document.querySelectorAll('[data-en-title]').forEach(el => {
+                el.title = el.getAttribute(`data-${currentLang}-title`) || el.title;
+            });
+            // Update title tag
+            document.title = document.querySelector('title [data-' + currentLang + ']')?.textContent || document.title;
+            document.documentElement.lang = currentLang;
         }
 
         function openModal() {
