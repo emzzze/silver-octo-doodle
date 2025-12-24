@@ -1,27 +1,20 @@
 #!/bin/bash
 
-# AlphaGuard IT - Improved Build Script
-# Copies only necessary files to dist/ (no hidden folders like .git)
+# 1. Run a one-time production build of Tailwind (Minified)
+echo "Building professional CSS..."
+npx @tailwindcss/cli -i ./src/input.css -o ./style.css --minify
 
-set -e
+# 2. Add all changes to Git
+echo "Staging files..."
+git add .
 
-echo "🚀 Building AlphaGuard IT site..."
-echo "   Date: $(date)"
-echo ""
+# 3. Commit with a timestamp
+timestamp=$(date +'%Y-%m-%d %H:%M:%S')
+echo "Committing changes..."
+git commit -m "AlphaGuard Update: $timestamp"
 
-rm -rf dist
-mkdir -p dist
+# 4. Push to GitHub
+echo "Pushing to GitHub..."
+git push origin main
 
-# Copy only specific files (safe, no hidden dirs)
-cp index.html dist/
-cp README.md dist/ 2>/dev/null || true
-
-# If you add images/CSS/JS later, add lines like:
-# cp logo.png style.css dist/ 2>/dev/null || true
-
-# Add timestamp
-echo "" >> dist/index.html
-echo "<!-- AlphaGuard IT - Built on $(date '+%Y-%m-%d %H:%M:%S') by build.sh -->" >> dist/index.html
-
-echo "✅ Build complete! dist/ is clean."
-ls -la dist/
+echo "Success! AlphaGuard IT is now live."

@@ -3,335 +3,466 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="AlphaGuard IT provides cybersecurity, cloud management, and 24/7 IT support for small businesses. Woman-owned. Bilingual EN/FR.">
-    <meta name="keywords" content="IT support, cybersecurity, cloud management, small business IT">
-    <meta property="og:title" content="AlphaGuard IT - Your Geek-Chic IT Guardian">
-    <meta property="og:description" content="Secure, simplified IT solutions for small businesses.">
-    <meta property="og:type" content="website">
-    <title>AlphaGuard IT – Your Geek-Chic IT Guardian</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Lato:wght@300;400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --navy: #0F1C3A;
-            --rose-gold: #FFB6C1;
-            --sea-green: #4CAF50;
-            --white: #FFFFFF;
-            --footer-bg: #0d172f;
-            --footer-text: #a0b8d8;
-        }
-        body {
-            margin: 0;
-            font-family: 'Lato', sans-serif;
-            background: var(--navy);
-            color: var(--white);
-            line-height: 1.6;
-            position: relative;
-            min-height: 100vh;
-        }
-        /* Circuit edges */
-        body::before, body::after {
-            content: "";
-            position: absolute;
-            top: 0; bottom: 0;
-            width: 220px;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 661 1000"><path d="M30 100 L70 50 L110 100 L150 30 L190 100 L230 50 L270 100" stroke="%234CAF50" stroke-width="1.8" fill="none" opacity="0.12"/><path d="M20 300 Q80 240 140 300 T260 300" stroke="%234CAF50" stroke-width="1.5" fill="none" opacity="0.1"/><path d="M40 500 L100 440 L160 500 L220 420 L280 500" stroke="%234CAF50" stroke-width="2" fill="none" opacity="0.13"/><circle cx="120" cy="680" r="4" fill="%234CAF50" opacity="0.15"/><path d="M350 200 L400 260 L450 200 L500 280" stroke="%234CAF50" stroke-width="1.7" fill="none" opacity="0.11"/></svg>') repeat-y;
-            background-size: contain;
-            opacity: 0.12;
-            z-index: -1;
-            pointer-events: none;
-        }
-        body::before { left: 0; transform: scaleX(-1); }
-        body::after { right: 0; }
-
-        header {
-            background: linear-gradient(to bottom, var(--navy), var(--sea-green));
-            padding: 4rem 2rem 3rem;
-            text-align: center;
-            position: relative;
-        }
-        .woman-owned {
-            position: absolute; top: 1.5rem; left: 2rem;
-            background: var(--rose-gold); color: var(--navy);
-            padding: 0.6rem 1.4rem; border-radius: 30px;
-            font-weight: bold; font-size: 0.95rem;
-        }
-        .lang-toggle {
-            position: absolute; top: 1.5rem; right: 2rem;
-            background: rgba(255,182,193,0.2); border: 1px solid var(--rose-gold);
-            color: var(--rose-gold); padding: 0.7rem 1.4rem; border-radius: 30px;
-            cursor: pointer; font-weight: bold; font-size: 1rem;
-        }
-        .lang-toggle:hover { background: var(--rose-gold); color: var(--navy); }
-        h1 { font-family: 'Poppins', sans-serif; font-size: 3rem; color: var(--rose-gold); margin: 0.5rem 0; }
-        header p { font-size: 1.3rem; opacity: 0.95; }
-
-        section { padding: 4rem 2rem; max-width: 1200px; margin: 0 auto; }
-        h2 { font-family: 'Poppins', sans-serif; color: var(--rose-gold); border-bottom: 3px solid var(--sea-green); padding-bottom: 0.8rem; margin-bottom: 2rem; }
-
-        .services-grid, .packages { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: 2rem; }
-        .service-card, .package-card {
-            background: rgba(76,175,80,0.15);
-            padding: 2rem; border-radius: 12px;
-            border-left: 5px solid var(--rose-gold);
-            transition: all 0.3s;
-        }
-        .service-card:hover, .package-card:hover { transform: translateY(-10px); box-shadow: 0 12px 30px rgba(76,175,80,0.4); }
-        .price { font-size: 2.4rem; color: var(--sea-green); font-weight: bold; }
-        .accordion { background: var(--sea-green); color: white; padding: 0.8rem; border-radius: 8px; cursor: pointer; text-align: center; margin-top: 1rem; font-weight: bold; }
-        .panel { display: none; padding: 1.2rem; background: rgba(76,175,80,0.1); border-radius: 8px; margin-top: 0.5rem; }
-
-        .testimonial { background: rgba(255,182,193,0.1); padding: 2rem; border-radius: 12px; text-align: center; font-style: italic; }
-
-        .chatbot-btn {
-            position: fixed; bottom: 2rem; right: 2rem;
-            background: var(--rose-gold); color: var(--navy);
-            width: 70px; height: 70px; border-radius: 50%;
-            font-size: 2rem; border: none; cursor: pointer;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-            z-index: 1000;
-        }
-
-        .modal {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.8); z-index: 1001; justify-content: center; align-items: center;
-        }
-        .modal-content {
-            background: var(--navy); padding: 2.5rem; border-radius: 16px;
-            width: 90%; max-width: 550px; position: relative;
-        }
-        .close { position: absolute; top: 1rem; right: 1.5rem; font-size: 2rem; cursor: pointer; color: var(--rose-gold); }
-
-        /* OKTO-STYLE FOOTER */
-        .main-footer { background: var(--footer-bg); color: var(--footer-text); padding: 5rem 2rem 2rem; margin-top: 8rem; }
-        .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; max-width: 1200px; margin: 0 auto 3rem; padding-bottom: 2rem; border-bottom: 1px solid #2a3a5c; }
-        .footer-logo { font-size: 2.2rem; font-weight: bold; color: var(--rose-gold); }
-        .footer-top h4 { color: var(--rose-gold); margin-bottom: 1rem; }
-        .footer-top ul { list-style: none; padding: 0; }
-        .footer-top li { margin: 0.7rem 0; }
-        .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem; max-width: 1200px; margin: 0 auto; }
-        .footer-links a { color: var(--footer-text); margin: 0 1.2rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; }
-        .footer-links a:hover, .social-icons a:hover { color: var(--rose-gold); }
-        .social-icons a { font-size: 1.5rem; margin-left: 1.5rem; }
-
-        @media (max-width: 968px) {
-            .footer-top { grid-template-columns: 1fr; text-align: center; }
-            .footer-bottom { flex-direction: column; text-align: center; }
-        }
-    </style>
+    <link href="./style.css" rel="stylesheet">
+    <title>AlphaGuard IT - Enterprise Security</title>
 </head>
 <body>
+    <!-- Header -->
+    <header class="border-b border-custom sticky top-0 z-50 backdrop-blur-sm" style="background-color: rgba(23, 23, 36, 0.95);">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex h-20 items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="flex items-center gap-2">
+                        <div class="h-10 w-10 rounded-lg bg-primary border border-lime/30 flex items-center justify-center">
+                            <svg class="h-6 w-6 text-lime" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="text-xl font-semibold tracking-tight">AlphaGuard IT</div>
+                            <div class="text-xs text-muted">Enterprise Security</div>
+                        </div>
+                    </div>
+                </div>
 
-    <header>
-        <div class="woman-owned">
-            <span data-lang="en">Woman-Owned</span>
-            <span data-lang="fr">Entreprise dirigée par une femme</span>
+                <nav class="hidden md:flex items-center gap-8">
+                    <a href="#services" class="text-sm font-medium text-white/80 hover-lime transition-colors">Services</a>
+                    <a href="#pricing" class="text-sm font-medium text-white/80 hover-lime transition-colors">Pricing</a>
+                    <a href="#contact" class="text-sm font-medium text-white/80 hover-lime transition-colors">Contact</a>
+                    <div class="flex items-center gap-3">
+                        <span class="text-xs border-l pl-3 border-custom text-pink">Woman-Owned</span>
+                        <button class="text-xs hover-lime">EN / FR</button>
+                    </div>
+                </nav>
+
+                <button class="md:hidden">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
         </div>
-        <button class="lang-toggle" onclick="toggleLang()">EN / FR</button>
-
-        <h1><span data-lang="en">AlphaGuard IT</span><span data-lang="fr">AlphaGuard IT</span></h1>
-        <p><span data-lang="en">Your Geek-Chic Guardian for Secure, Simplified IT Solutions</span>
-           <span data-lang="fr">Votre Gardien Geek-Chic pour des Solutions TI Sécurisées et Simplifiées</span></p>
     </header>
 
-    <section id="services">
-        <h2><span data-lang="en">Our Services</span><span data-lang="fr">Nos Services</span></h2>
-        <div class="services-grid">
-            <div class="service-card" onclick="openServiceModal('cyber')">
-                <i class="fas fa-shield-alt" style="color:var(--rose-gold);font-size:2.5rem;"></i>
-                <h3><span data-lang="en">Cybersecurity</span><span data-lang="fr">Cybersécurité</span></h3>
-                <p><span data-lang="en">Shield your data with advanced threat detection — no jargon, just protection.</span>
-                   <span data-lang="fr">Protégez vos données avec une détection avancée des menaces — sans jargon, juste protection.</span></p>
-            </div>
-            <div class="service-card" onclick="openServiceModal('cloud')">
-                <i class="fas fa-cloud" style="color:var(--rose-gold);font-size:2.5rem;"></i>
-                <h3><span data-lang="en">Cloud Management</span><span data-lang="fr">Gestion Cloud</span></h3>
-                <p><span data-lang="en">Seamless migrations & cost optimization for Azure, AWS, Microsoft 365.</span>
-                   <span data-lang="fr">Migrations fluides et optimisation des coûts pour Azure, AWS, Microsoft 365.</span></p>
-            </div>
-            <div class="service-card" onclick="openServiceModal('support')">
-                <i class="fas fa-headset" style="color:var(--rose-gold);font-size:2.5rem;"></i>
-                <h3><span data-lang="en">Priority Support</span><span data-lang="fr">Support Prioritaire</span></h3>
-                <p><span data-lang="en">24/7 geek squad ready to solve your issues fast.</span>
-                   <span data-lang="fr">Équipe geek 24/7 prête à résoudre vos problèmes rapidement.</span></p>
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-lime/10 to-transparent pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 py-24 lg:py-32 relative">
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-lime/30 mb-8" style="background-color: rgba(180, 240, 80, 0.1);">
+                    <div class="h-2 w-2 rounded-full bg-lime pulse-dot"></div>
+                    <span class="text-sm font-medium text-lime">Your Geek-Chic IT Guardian</span>
+                </div>
+
+                <h1 class="text-5xl lg:text-7xl font-bold tracking-tight mb-6">
+                    Enterprise-Grade
+                    <span class="block gradient-text">Cybersecurity</span>
+                </h1>
+
+                <p class="text-xl text-muted mb-10 max-w-2xl mx-auto leading-relaxed">
+                    Secure, simplified IT solutions designed for growing businesses. Advanced protection without the complexity.
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <button class="px-8 py-3 bg-lime text-black font-medium rounded-lg hover:opacity-90 transition-opacity flex items-center gap-2">
+                        Schedule Consultation
+                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                    <button class="px-8 py-3 border border-custom rounded-lg hover:bg-lime/10 hover:text-lime hover:border-lime transition-all">
+                        View Services
+                    </button>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="packages">
-        <h2><span data-lang="en">Pricing Packages (per device/month)</span><span data-lang="fr">Forfaits Tarifs (par appareil/mois)</span></h2>
-        <div class="packages">
-            <div class="package-card">
-                <h3><span data-lang="en">Essential</span><span data-lang="fr">Essentiel</span></h3>
-                <ul>
-                    <li>Basic security monitoring</li>
-                    <li>Unlimited email support</li>
-                    <li>Monthly health check</li>
-                </ul>
-                <p><span class="price">$99</span>/month</p>
-                <div class="accordion" onclick="togglePanel(this)"><span data-lang="en">More Details</span><span data-lang="fr">Plus de détails</span></div>
-                <div class="panel"><p>Perfect for startups and very small teams.</p></div>
+    <!-- Services Section -->
+    <section id="services" class="py-24 lg:py-32" style="background-color: rgba(38, 38, 58, 0.3);">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="max-w-2xl mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold tracking-tight mb-4">Comprehensive IT Services</h2>
+                <p class="text-lg text-muted leading-relaxed">
+                    Professional technology solutions tailored to protect and scale your business infrastructure.
+                </p>
             </div>
-            <!-- Repeat for Standard & Complete (same structure) -->
-            <div class="package-card">
-                <h3><span data-lang="en">Standard</span><span data-lang="fr">Standard</span></h3>
-                <ul><li>Advanced cybersecurity</li><li>Cloud backups</li><li>Quarterly reports</li></ul>
-                <p><span class="price">$199</span>/month</p>
-                <div class="accordion" onclick="togglePanel(this)"><span data-lang="en">More Details</span><span data-lang="fr">Plus de détails</span></div>
-                <div class="panel"><p>Most popular choice for growing businesses.</p></div>
-            </div>
-            <div class="package-card">
-                <h3><span data-lang="en">Complete</span><span data-lang="fr">Complet</span></h3>
-                <ul><li>Full strategic IT advisory</li><li>Custom integrations</li><li>Dedicated vCIO</li></ul>
-                <p><span class="price">$399</span>/month</p>
-                <div class="accordion" onclick="togglePanel(this)"><span data-lang="en">More Details</span><span data-lang="fr">Plus de détails</span></div>
-                <div class="panel"><p>Everything you need to scale confidently.</p></div>
+
+            <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
+                <!-- Cybersecurity Card -->
+                <div class="bg-card p-8 rounded-xl border border-custom hover:border-lime/30 hover:shadow-xl hover:shadow-lime/5 transition-all duration-300">
+                    <div class="h-14 w-14 rounded-xl border border-lime/20 flex items-center justify-center mb-6" style="background-color: rgba(180, 240, 80, 0.1);">
+                        <svg class="h-7 w-7 text-lime" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-3">Cybersecurity</h3>
+                    <p class="text-muted leading-relaxed mb-6">
+                        Advanced threat detection and data protection. Enterprise-grade security infrastructure without the complexity.
+                    </p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center gap-2 text-sm">
+                            <svg class="h-4 w-4 text-lime" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span>24/7 Security Monitoring</span>
+                        </li>
+                        <li class="flex items-center gap-2 text-sm">
+                            <svg class="h-4 w-4 text-lime" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span>Threat Intelligence</span>
+                        </li>
+                        <li class="flex items-center gap-2 text-sm">
+                            <svg class="h-4 w-4 text-lime" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span>Compliance Management</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Cloud Management Card -->
+                <div class="bg-card p-8 rounded-xl border border-custom hover:border-lime/30 hover:shadow-xl hover:shadow-lime/5 transition-all duration-300">
+                    <div class="h-14 w-14 rounded-xl border border-lime/20 flex items-center justify-center mb-6" style="background-color: rgba(180, 240, 80, 0.1);">
+                        <svg class="h-7 w-7 text-lime" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-3">Cloud Management</h3>
+                    <p class="text-muted leading-relaxed mb-6">
+                        Seamless cloud migrations and optimization for Azure, AWS, and Microsoft 365 environments.
+                    </p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center gap-2 text-sm">
+                            <svg class="h-4 w-4 text-lime" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span>Cloud Migration Strategy</span>
+                        </li>
+                        <li class="flex items-center gap-2 text-sm">
+                            <svg class="h-4 w-4 text-lime" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span>Cost Optimization</span>
+                        </li>
+                        <li class="flex items-center gap-2 text-sm">
+                            <svg class="h-4 w-4 text-lime" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span>Infrastructure Scaling</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Priority Support Card -->
+                <div class="bg-card p-8 rounded-xl border border-custom hover:border-lime/30 hover:shadow-xl hover:shadow-lime/5 transition-all duration-300">
+                    <div class="h-14 w-14 rounded-xl border border-lime/20 flex items-center justify-center mb-6" style="background-color: rgba(180, 240, 80, 0.1);">
+                        <svg class="h-7 w-7 text-lime" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-3">Priority Support</h3>
+                    <p class="text-muted leading-relaxed mb-6">
+                        Dedicated technical support team available 24/7 to resolve issues rapidly and minimize downtime.
+                    </p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center gap-2 text-sm">
+                            <svg class="h-4 w-4 text-lime" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span>24/7 Rapid Response</span>
+                        </li>
+                        <li class="flex items-center gap-2 text-sm">
+                            <svg class="h-4 w-4 text-lime" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span>Dedicated Account Manager</span>
+                        </li>
+                        <li class="flex items-center gap-2 text-sm">
+                            <svg class="h-4 w-4 text-lime" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span>Proactive Maintenance</span>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="testimonials">
-        <h2><span data-lang="en">What Clients Say</span><span data-lang="fr">Témoignages</span></h2>
-        <div class="testimonial">
-            <p>"AlphaGuard turned our IT chaos into cosmic order — fast, fierce, and fabulous!"</p>
-            <cite>– Tech-Savvy CEO</cite>
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-24 lg:py-32">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="max-w-2xl mx-auto text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold tracking-tight mb-4">Transparent Pricing</h2>
+                <p class="text-lg text-muted">Flexible plans designed to scale with your business needs</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto">
+                <!-- Essential Plan -->
+                <div class="bg-card p-8 rounded-xl border border-custom hover:border-lime/30 transition-all">
+                    <div class="mb-6">
+                        <h3 class="text-2xl font-semibold mb-2">Essential</h3>
+                        <p class="text-sm text-muted mb-4">Perfect for startups and small teams</p>
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-5xl font-bold">$99</span>
+                            <span class="text-muted">/device/month</span>
+                        </div>
+                    </div>
+
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start gap-3">
+                            <svg class="h-5 w-5 text-lime mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span class="text-sm">Basic security monitoring</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="h-5 w-5 text-lime mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span class="text-sm">Unlimited email support</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="h-5 w-5 text-lime mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span class="text-sm">Monthly health check</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="h-5 w-5 text-lime mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span class="text-sm">Software updates</span>
+                        </li>
+                    </ul>
+
+                    <button class="w-full py-3 border border-custom rounded-lg hover:bg-lime/10 hover:text-lime hover:border-lime transition-all">
+                        Get Started
+                    </button>
+                </div>
+
+                <!-- Standard Plan (Most Popular) -->
+                <div class="bg-card p-8 rounded-xl border-2 border-lime shadow-xl shadow-lime/10 relative">
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-lime text-black text-xs font-medium rounded-full">
+                        Most Popular
+                    </div>
+
+                    <div class="mb-6">
+                        <h3 class="text-2xl font-semibold mb-2">Standard</h3>
+                        <p class="text-sm text-muted mb-4">Ideal for growing businesses</p>
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-5xl font-bold">$199</span>
+                            <span class="text-muted">/device/month</span>
+                        </div>
+                    </div>
+
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start gap-3">
+                            <svg class="h-5 w-5 text-lime mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span class="text-sm">Advanced cybersecurity</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="h-5 w-5 text-lime mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span class="text-sm">Cloud backups & disaster recovery</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="h-5 w-5 text-lime mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span class="text-sm">Priority phone support</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="h-5 w-5 text-lime mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span class="text-sm">Quarterly strategy reports</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="h-5 w-5 text-lime mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span class="text-sm">Compliance assistance</span>
+                        </li>
+                    </ul>
+
+                    <button class="w-full py-3 bg-lime text-black font-medium rounded-lg hover:opacity-90 transition-opacity">
+                        Get Started
+                    </button>
+                </div>
+
+                <!-- Complete Plan -->
+                <div class="bg-card p-8 rounded-xl border border-custom hover:border-lime/30 transition-all">
+                    <div class="mb-6">
+                        <h3 class="text-2xl font-semibold mb-2">Complete</h3>
+                        <p class="text-sm text-muted mb-4">Enterprise solutions at scale</p>
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-5xl font-bold">$399</span>
+                            <span class="text-muted">/device/month</span>
+                        </div>
+                    </div>
+
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start gap-3">
+                            <svg class="h-5 w-5 text-lime mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span class="text-sm">Full strategic IT advisory</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="h-5 w-5 text-lime mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span class="text-sm">Custom integrations</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="h-5 w-5 text-lime mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span class="text-sm">Dedicated vCIO</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="h-5 w-5 text-lime mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span class="text-sm">24/7 white-glove support</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="h-5 w-5 text-lime mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span class="text-sm">Custom SLA agreements</span>
+                        </li>
+                    </ul>
+
+                    <button class="w-full py-3 border border-custom rounded-lg hover:bg-lime/10 hover:text-lime hover:border-lime transition-all">
+                        Get Started
+                    </button>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- OKTO-STYLE FOOTER -->
-    <footer class="main-footer">
-        <div class="footer-top">
-            <div>
-                <div class="footer-logo">AlphaGuard IT</div>
-                <p data-lang="en">Thank you for your trust. We're convinced this is the start of a long and successful partnership.</p>
-                <p data-lang="fr">Merci de votre confiance. Nous sommes convaincus que c’est le début d’un partenariat long et fructueux.</p>
-            </div>
-            <div>
-                <h4><span data-lang="en">Partners</span><span data-lang="fr">Partenaires</span></h4>
-                <ul>
-                    <li>Microsoft 365</li>
-                    <li>Azure</li>
-                    <li>Veeam</li>
-                    <li>NinjaOne</li>
-                    <li>KnowBe4</li>
-                </ul>
-            </div>
-            <div>
-                <h4>Contact</h4>
-                <ul>
-                    <li>+1 (405) 555-0199</li>
-                    <li>hello@alphaguardit.com</li>
-                    <li>Oklahoma City, OK</li>
-                </ul>
-            </div>
-        </div>
-        </div>
+    <!-- Testimonial Section -->
+    <section class="py-24 lg:py-32" style="background-color: rgba(38, 38, 58, 0.3);">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center">
+                <div class="mb-8">
+                    <svg class="h-12 w-12 text-lime/30 mx-auto" fill="currentColor" viewBox="0 0 32 32">
+                        <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z"/>
+                    </svg>
+                </div>
 
-        <div class="footer-bottom">
-            <div class="footer-links">
-                <a href="#"><i class="fas fa-home"></i> <span data-lang="en">Home</span><span data-lang="fr">Accueil</span></a>
-                <a href="#"><i class="fas fa-phone"></i> <span data-lang="en">Contact</span><span data-lang="fr">Contact</span></a>
-                <a href="#"><i class="fas fa-cogs"></i> <span data-lang="en">Services</span><span data-lang="fr">Services</span></a>
-                <a href="#"><i class="fas fa-shield-alt"></i> <span data-lang="en">Privacy</span><span data-lang="fr">Confidentialité</span></a>
+                <blockquote class="text-2xl lg:text-3xl font-medium mb-8 leading-relaxed">
+                    AlphaGuard transformed our IT infrastructure from chaotic to enterprise-grade. Fast, reliable, and truly professional.
+                </blockquote>
+
+                <div class="flex items-center justify-center gap-4">
+                    <div class="h-12 w-12 rounded-full bg-gradient-to-br from-lime to-lime/60"></div>
+                    <div class="text-left">
+                        <div class="font-semibold">Sarah Mitchell</div>
+                        <div class="text-sm text-muted">CEO, TechVenture Solutions</div>
+                    </div>
+                </div>
             </div>
-            <div class="social-icons">
-                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 lg:py-32">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="max-w-2xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl lg:text-5xl font-bold tracking-tight mb-4">Let's Secure Your Future</h2>
+                    <p class="text-lg text-muted">
+                        Ready to elevate your IT infrastructure? Get in touch with our team.
+                    </p>
+                </div>
+
+                <div class="bg-card p-8 lg:p-10 rounded-xl border border-custom">
+                    <form class="space-y-6">
+                        <div class="grid sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Name</label>
+                                <input type="text" class="w-full px-4 py-2.5 rounded-lg border border-custom bg-primary text-white focus:outline-none focus:ring-2 focus:ring-lime focus:border-lime" placeholder="John Doe"/>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Email</label>
+                                <input type="email" class="w-full px-4 py-2.5 rounded-lg border border-custom bg-primary text-white focus:outline-none focus:ring-2 focus:ring-lime focus:border-lime" placeholder="john@company.com"/>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Company</label>
+                            <input type="text" class="w-full px-4 py-2.5 rounded-lg border border-custom bg-primary text-white focus:outline-none focus:ring-2 focus:ring-lime focus:border-lime" placeholder="Company Name"/>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Message</label>
+                            <textarea rows="5" class="w-full px-4 py-2.5 rounded-lg border border-custom bg-primary text-white focus:outline-none focus:ring-2 focus:ring-lime focus:border-lime resize-none" placeholder="Tell us about your IT needs..."></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-3 bg-lime text-black font-medium rounded-lg hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
+                            Send Message
+                            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-custom py-12">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-12">
+                <div class="md:col-span-2">
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="h-8 w-8 rounded-lg bg-primary border border-lime/30 flex items-center justify-center">
+                            <svg class="h-5 w-5 text-lime" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                            </svg>
+                        </div>
+                        <span class="text-lg font-semibold">AlphaGuard IT</span>
+                    </div>
+                    <p class="text-sm text-muted mb-4">Enterprise-grade cybersecurity solutions for growing businesses</p>
+                    <p class="text-xs text-pink">Woman-Owned Business</p>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2 text-sm text-muted">
+                        <li><a href="#" class="hover-lime transition-colors">Cybersecurity</a></li>
+                        <li><a href="#" class="hover-lime transition-colors">Cloud Management</a></li>
+                        <li><a href="#" class="hover-lime transition-colors">Priority Support</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2 text-sm text-muted">
+                        <li><a href="#" class="hover-lime transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover-lime transition-colors">Contact</a></li>
+                        <li><a href="#" class="hover-lime transition-colors">Careers</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-custom pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-sm text-muted">&copy; 2025 AlphaGuard IT. All rights reserved.</p>
+                <div class="flex gap-6 text-sm text-muted">
+                    <a href="#" class="hover-lime transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover-lime transition-colors">Terms of Service</a>
+                </div>
             </div>
         </div>
     </footer>
-
-    <!-- Chatbot Button -->
-    <button class="chatbot-btn" onclick="openModal()">
-        <i class="fas fa-comments"></i>
-    </button>
-
-    <!-- Chat Modal -->
-    <div id="chatModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">×</span>
-            <h2 style="color:var(--rose-gold);"><span data-lang="en">How Can I Guard Your Galaxy Today?</span><span data-lang="fr">Comment Protéger Votre Galaxie Aujourd'hui ?</span></h2>
-            <form name="contact" method="POST" data-netlify="true">
-                <input type="hidden" name="form-name" value="contact">
-                <input type="text" name="name" placeholder="Your Name" required>
-                <input type="email" name="email" placeholder="Your Email" required>
-                <input type="tel" name="phone" placeholder="Phone (optional)">
-                <textarea name="message" placeholder="Your message..." rows="5" required></textarea>
-                <button type="submit">Send Message</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Service Detail Modal -->
-    <div id="serviceModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeServiceModal()">×</span>
-            <div id="serviceContent"></div>
-        </div>
-    </div>
-
-    <script>
-        let currentLang = 'en';
-
-        function toggleLang() {
-            currentLang = currentLang === 'en' ? 'fr' : 'en';
-            document.querySelectorAll('[data-lang]').forEach(span => {
-                span.style.display = (span.getAttribute('data-lang') === currentLang) ? 'inline' : 'none';
-            });
-            document.documentElement.lang = currentLang;
-        }
-
-        function openModal() {
-            document.getElementById('chatModal').style.display = 'flex';
-        }
-        function closeModal() {
-            document.getElementById('chatModal').style.display = 'none';
-        }
-
-        function togglePanel(btn) {
-            const panel = btn.nextElementSibling;
-            panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
-        }
-
-        // FULLY FINISHED openServiceModal function (English + French)
-        function openServiceModal(type) {
-            const content = document.getElementById('serviceContent');
-            const texts = {
-                cyber: {
-                    en: `<h3>Cybersecurity</h3>
-                          <p>Advanced threat detection with AI-driven alerts. Includes endpoint protection, dark web monitoring, phishing training, and full compliance support (HIPAA, CMMC, etc.).</p>`,
-                    fr: `<h3>Cybersécurité</h3>
-                          <p>Détection avancée des menaces avec alertes pilotées par IA. Inclut protection des terminaux, surveillance du dark web, formation anti-phishing et conformité complète (HIPAA, CMMC, etc.).</p>`
-                },
-                cloud: {
-                    en: `<h3>Cloud Management</h3>
-                          <p>Seamless migrations to Microsoft 365, Azure, AWS. Ongoing cost optimization, automated backups, and 99.9% uptime guarantee.</p>`,
-                    fr: `<h3>Gestion Cloud</h3>
-                          <p>Migrations fluides vers Microsoft 365, Azure, AWS. Optimisation continue des coûts, sauvegardes automatisées et garantie de disponibilité 99,9%.</p>`
-                },
-                support: {
-                    en: `<h3>Priority Support</h3>
-                          <p>24/7 remote helpdesk, proactive monitoring, dedicated account manager, and quarterly business reviews.</p>`,
-                    fr: `<h3>Support Prioritaire</h3>
-                          <p>Assistance à distance 24/7, surveillance proactive, gestionnaire de compte dédié et revues d'affaires trimestrielles.</p>`
-                }
-            };
-            content.innerHTML = texts[type][currentLang];
-            document.getElementById('serviceModal').style.display = 'flex';
-        }
-
-        function closeServiceModal() {
-            document.getElementById('serviceModal').style.display = 'none';
-        }
-
-        // Close modals when clicking outside
-        window.onclick = function(e) => {
-            if (e.target.classList.contains('modal')) {
-                e.target.style.display = 'none';
-            }
-        };
-    </script>
 </body>
 </html>

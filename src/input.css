@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+@theme {
+  /* Your Professional Geek-Chic Palette */
+  --color-bg-dark: oklch(0.15 0.02 240);
+  --color-card-bg: oklch(0.18 0.02 240);
+  --color-lime: oklch(0.75 0.18 135);
+  --color-pink: oklch(0.85 0.08 340);
+}
+
+@utility gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-pink to-lime;
+}
+
+@utility pulse-dot {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .5; }
+}
